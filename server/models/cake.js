@@ -1,5 +1,7 @@
 const { model, Schema, Types: { ObjectId } } = require("mongoose");
 
+
+const Images = new Schema({ name: String})
 const schema = new Schema({
     cakeName: {
         type: String,
@@ -10,7 +12,10 @@ const schema = new Schema({
     price: {
         type: Number,
     },
-    img: { type: String },
+    img: {
+        type: [Images],
+        default: undefined
+    },
     owner: {type: ObjectId, ref: "User"},
     onOffer: { type: Boolean },
     discount: { 
