@@ -8,9 +8,13 @@ const schema = new Schema({
         required: [true, 'Cake name is required'],
         minlength: [4, 'Cake name must contain atleast 4 characters']
     },
-    desc: { type: String },
+    desc: { type: String, required: true, maxlength: [300, 'Description must be 300 characters at most'] },
     price: {
         type: Number,
+        required: true
+    },
+    type: {
+        type: String,
         required: true
     },
     img: {
@@ -18,6 +22,9 @@ const schema = new Schema({
         default: undefined,
         required: true
     },
+    likes:
+        [{ type: ObjectId, ref: "User" }]
+    ,
     owner: { type: ObjectId, ref: "User" },
     onOffer: { type: Boolean, default: false },
     discount: {
