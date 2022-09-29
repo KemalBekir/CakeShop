@@ -1,7 +1,7 @@
 const { model, Schema, Types: { ObjectId } } = require("mongoose");
 
 
-const Images = new Schema({ name: String})
+const Images = new Schema({ name: String })
 const schema = new Schema({
     cakeName: {
         type: String,
@@ -11,15 +11,21 @@ const schema = new Schema({
     desc: { type: String },
     price: {
         type: Number,
+        required: true
     },
     img: {
         type: [Images],
-        default: undefined
+        default: undefined,
+        required: true
     },
-    owner: {type: ObjectId, ref: "User"},
-    onOffer: { type: Boolean },
-    discount: { 
+    owner: { type: ObjectId, ref: "User" },
+    onOffer: { type: Boolean, default: false },
+    discount: {
         type: Number,
-        enum: [10, 15,20,25,50]
+        enum: [10, 15, 20, 25, 50]
     }
-})
+});
+
+const Cake = model('Cake', schema);
+
+module.exports = Cake;
