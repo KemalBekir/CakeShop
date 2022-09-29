@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 
 const cors = require("./middleware/cors");
+const usersController = require('./controllers/users');
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
@@ -20,20 +21,21 @@ async function start() {
         console.error("Database conection failed");
     }
 
-    mongoose.connection.on("disconnected", ()=> {
+    mongoose.connection.on("disconnected", () => {
         console.log("mongoDB disconnected");
     });
 
-    mongoose.connection.on("connected", ()=> {
+    mongoose.connection.on("connected", () => {
         console.log("mongoDB connected");
     });
 
     const app = express();
     app.use(express.json());
     app.use(cors());
+    app.use('/users', usersController);
 
-    app.get('/', (req,res) => {
-        res.json({message: 'REST service operational'});
+    app.get('/', (req, res) => {
+        res.json({ message: 'REST service operational' });
     })
 
     app.listen(PORT, () => console.log(`REST service started on ${PORT}`));

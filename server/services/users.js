@@ -3,10 +3,10 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const blacklist = [];
 
-async function register(username,email,password){
-    const existing = await User.findOne({ email: new RegExp(`^${email}$`, "i")});
-    
-    if(existing) {
+async function register(username, email, password) {
+    const existing = await User.findOne({ email: new RegExp(`^${email}$`, "i") });
+
+    if (existing) {
         throw new Error("Email already exists");
     }
 
@@ -24,24 +24,24 @@ async function register(username,email,password){
 async function login(email, password) {
     const user = await User.findOne({ email: new RegExp(`^${email}$`, "i") });
 
-    if(!user){
+    if (!user) {
         throw new Error("Incorrect email or password");
     }
 
     const match = await bcrypt.compare(password, user.hashedPassword);
 
-    if(!match){
+    if (!match) {
         throw new Error("Incorrect email or password");
     }
 
     return createSession(user);
 }
 
-function logout(token){
+function logout(token) {
     blacklist.push(token);
 }
 
-function createSession(user){
+function createSession(user) {
     return {
         email: user.email,
         _id: user._id,
@@ -55,8 +55,8 @@ function createSession(user){
     }
 }
 
-function verifySession(token){
-    if(blacklist.includes(token)){
+function verifySession(token) {
+    if (blacklist.includes(token)) {
         throw new Error("Token is invalidated");
     }
 
@@ -68,9 +68,27 @@ function verifySession(token){
     };
 }
 
+async function getProfile(id) {
+    const user = User.findOne({ _id: id }, { hashedPassword: 0, __v: 0});
+
+    if(!user) {
+        throw new Error("User does not exist");
+    }
+    return user;
+}
+
+async function updateProfileInfo(id, user) {
+    const existing = await User.findById(id);
+
+    existing.username = user.username;
+    existing.email = user.email;
+}
+
 module.exports = {
     login,
     register,
     logout,
     verifySession,
+    getProfile,
+    updateProfileInfo,
 }
