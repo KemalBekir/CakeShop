@@ -61,6 +61,16 @@ async function searchFunction(text) {
     });
 }
 
+async function isLiked(cakeId, userId) {
+    const cake = await Cake.find(cakeId);
+
+    if (cake.likes.includes(userId)) {
+        cake.filter(x => x._id != userId);
+    }
+    cake.likes.push(userId);
+    await cake.save();
+}
+
 module.exports = {
     create,
     getAll,
@@ -72,4 +82,5 @@ module.exports = {
     getAllCakesByOwner,
     getAllDesc,
     getAllAsc,
+    isLiked,
 };

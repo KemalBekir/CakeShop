@@ -1,7 +1,7 @@
 const { model, Schema, Types: { ObjectId } } = require("mongoose");
 
 
-const Images = new Schema({ name: String })
+const Images = new Schema({ type: String });
 const schema = new Schema({
     cakeName: {
         type: String,

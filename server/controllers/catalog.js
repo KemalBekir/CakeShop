@@ -38,7 +38,7 @@ router.post('/', isAuth(), async (req, res) => {
         price: req.body.price,
         type: req.body.type,
         img: [...req.body.img],
-        likes: req.body.likes.length,
+        likes: req.body.likes,
         owner: req.user._id,
         onOffer: req.body.onOffer,
         discount: req.body.discount
@@ -67,7 +67,7 @@ router.put('/:id', preload(), isOwner(), async (req, res) => {
         price: req.body.price,
         type: req.body.type,
         img: [...req.body.img],
-        likes: req.body.likes.length,
+        likes: req.body.likes,
         owner: req.user._id,
         onOffer: req.body.onOffer,
         discount: req.body.discount
