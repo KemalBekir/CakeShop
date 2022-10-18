@@ -26,6 +26,7 @@ const userSchema = new Schema (
             message: "Email must be valid",
           },
         },
+        role: { type: String, default: 'user'},
         hashedPassword: { type: String, required: true },
         myAds: [{ type: ObjectId, ref: "Cake" }],
       },
