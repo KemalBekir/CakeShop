@@ -56,6 +56,7 @@ function createSession(user) {
 }
 
 function verifySession(token) {
+    console.log(token);
     if (blacklist.includes(token)) {
         throw new Error("Token is invalidated");
     }

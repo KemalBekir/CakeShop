@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("./middleware/cors");
 const usersController = require('./controllers/users');
 const catalogController = require('./controllers/catalog');
+const auth = require('./middleware/auth');
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
@@ -33,6 +34,7 @@ async function start() {
     const app = express();
     app.use(express.json());
     app.use(cors());
+    app.use(auth());
     app.use('/users', usersController);
     app.use('/catalog', catalogController);
 

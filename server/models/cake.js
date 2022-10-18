@@ -1,7 +1,7 @@
 const { model, Schema, Types: { ObjectId } } = require("mongoose");
 
 
-const Images = new Schema({ type: String });
+
 const schema = new Schema({
     cakeName: {
         type: String,
@@ -18,7 +18,7 @@ const schema = new Schema({
         required: true
     },
     img: {
-        type: [Images],
+        type: String,
         default: undefined,
         required: true
     },

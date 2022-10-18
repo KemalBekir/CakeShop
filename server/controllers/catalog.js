@@ -37,7 +37,7 @@ router.post('/', isAuth(), async (req, res) => {
         desc: req.body.desc,
         price: req.body.price,
         type: req.body.type,
-        img: [...req.body.img],
+        img: req.body.img,
         likes: req.body.likes,
         owner: req.user._id,
         onOffer: req.body.onOffer,
