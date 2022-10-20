@@ -9,9 +9,19 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <span className="main-logo">
-        <Link style={{ textDecoration: "none", color: "black" }} to="/">
+        <div className="main-logo-container">
+          <img
+            className="logo"
+            src="/assets/logo-no-background.svg"
+            alt="company logo"
+          />
+        </div>
+        {/* <Link
+          style={{ textDecoration: "none", color: "black", width: "35%" }}
+          to="/"
+        >
           Cake Shop
-        </Link>
+        </Link> */}
       </span>
       <ul>
         <li>
