@@ -18,6 +18,16 @@ function isGuest(){
     }
 }
 
+function isAdmin(){
+    return(req,res,next) => {
+        if(req.user.role === 'admin') {
+            next();
+        } else {
+            res.status(401).json({ message: 'You cannot create new record'});
+        }
+    }
+}
+
 function isOwner(){
     return(req,res,next) => {
         if(req.user && req.user._id == res.locals.cake.owner._id && req.user.role === 'admin'){
@@ -31,5 +41,6 @@ function isOwner(){
 module.exports = { 
     isAuth,
     isGuest,
-    isOwner
+    isOwner,
+    isAdmin,
 }

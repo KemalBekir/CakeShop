@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const api = require("../services/cake");
 const mapErrors = require("../utils/mappers");
-const { isAuth, isOwner } = require("../middleware/guards");
+const { isAuth, isOwner, isAdmin } = require("../middleware/guards");
 const preload = require("../middleware/preload");
 
 router.get('/', async (req, res) => {
@@ -31,7 +31,7 @@ router.get('/myCakes', isAuth(), async (req, res) => {
     res.json(data);
 });
 
-router.post('/', isAuth(), async (req, res) => {
+router.post('/', isAuth(), isAdmin(), async (req, res) => {
     const cake = {
         cakeName: req.body.cakeName,
         desc: req.body.desc,
