@@ -1,12 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import { AuthProvider } from './contexts/authContext';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./contexts/authContext";
+import Home from "./components/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <AuthProvider>
       <div id="body-container">
-        <h1>Welcome</h1>
+        <Navbar />
+
+        <main id="site-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </main>
       </div>
     </AuthProvider>
   );
