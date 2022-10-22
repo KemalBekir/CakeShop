@@ -6,8 +6,8 @@ import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <AuthProvider>
-      <div id="body-container">
+    <div className="body-container">
+      <AuthProvider>
         <Navbar />
 
         <main id="site-content">
@@ -15,8 +15,8 @@ function App() {
             <Route path="/" element={<Home />} />
           </Routes>
         </main>
-      </div>
-    </AuthProvider>
+      </AuthProvider>
+    </div>
   );
 }
 

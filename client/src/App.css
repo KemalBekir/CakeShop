@@ -75,13 +75,22 @@ select {
   }
 }
 
-#body-container {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
+.body-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
 }
+
 
 .alert {
   color: red;
   font-size: 1.2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .body-container {
+    width: 100%;
+  }
 }
