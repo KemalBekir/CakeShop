@@ -6,6 +6,7 @@
     width: 30%;
     height: 100%;
     margin: 5rem auto;
+    padding: 1.5rem 0;
     background-color: white;
     border-radius: 1rem;
     -webkit-box-shadow: 0px 8px 14px 5px rgba(0, 0, 0, 0.3);
@@ -48,7 +49,7 @@
   .login-btn {
       margin: 1rem 0;
       font-size: 1.5rem;
-      background-color: #5680e9;
+      background-color: #31c48d;
       color: white;
       border: none;
       padding: 0.8rem;
@@ -66,5 +67,5 @@
       text-decoration: none;
       font-size: 1.3rem;
       font-weight: bold;
-      color: #527eee;
+      color: #31c48d;
   }
