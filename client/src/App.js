@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/authContext";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
+import Login from "./components/Login/Login";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <main id="site-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
       </AuthProvider>

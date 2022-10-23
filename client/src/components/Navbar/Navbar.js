@@ -17,7 +17,7 @@ const Navbar = () => {
           />
         </div>
         {/* <Link
-          style={{ textDecoration: "none", color: "black", width: "35%" }}
+          style={{ textDecoration: "none", color: "white", width: "35%" }}
           to="/"
         >
           Cake Shop
@@ -25,21 +25,21 @@ const Navbar = () => {
       </span>
       <ul>
         <li>
-          <Link style={{ textDecoration: "none", color: "black" }} to="/">
+          <Link style={{ textDecoration: "none", color: "white" }} to="/">
             Home
           </Link>
         </li>
         <li>
           <Link
-            style={{ textDecoration: "none", color: "black" }}
+            style={{ textDecoration: "none", color: "white" }}
             to="/catalog"
           >
-            Catalog
+            Catalogue
           </Link>
         </li>
         <li>
           <Link
-            style={{ textDecoration: "none", color: "black" }}
+            style={{ textDecoration: "none", color: "white" }}
             to="/catalog/search"
           >
             Search
