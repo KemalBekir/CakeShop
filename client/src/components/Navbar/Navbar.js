@@ -9,8 +9,8 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <div className="nav-container">
-        <div className="main-logo-container">
-          <span className="main-logo">
+        <div className="nav-logo-container">
+          <span className="nav-logo">
             <img
               className="logo"
               src="/assets/logo-no-background.svg"
@@ -24,7 +24,7 @@ const Navbar = () => {
         </Link> */}
           </span>
         </div>
-        <div className="home-list-container">
+        <div className="nav-list-container">
           <ul>
             <li>
               <Link style={{ textDecoration: "none", color: "white" }} to="/">
