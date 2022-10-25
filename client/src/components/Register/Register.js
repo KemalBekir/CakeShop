@@ -99,13 +99,6 @@ const Register = () => {
             {errors.rePass && touched.rePass ? (
               <p className="alert">{errors.rePass}</p>
             ) : null}
-            <label htmlFor="tel">Tel:</label>
-            <Field
-              type="text"
-              name="tel"
-              placeholder="Telephone Number"
-              className="register-tel"
-            ></Field>
             <button
               type="submit"
               disabled={!(isValid && dirty)}

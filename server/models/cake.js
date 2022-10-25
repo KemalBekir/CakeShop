@@ -48,7 +48,7 @@ const schema = new Schema({
   onOffer: { type: Boolean, default: false },
   discount: {
     type: Number,
-    enum: [0, 10, 15, 20, 25, 50],
+    enum: [0, 10, 15, 20, 25, 30, 35, 40, 45, 50],
     default: 0,
   },
 });

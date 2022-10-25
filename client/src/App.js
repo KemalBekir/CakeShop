@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import Register from "./components/Register/Register";
+import Create from "./components/Create/Create";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/create" element={<Create />} />
           </Routes>
         </main>
       </AuthProvider>
