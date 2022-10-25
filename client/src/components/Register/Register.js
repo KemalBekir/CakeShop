@@ -51,70 +51,80 @@ const Register = () => {
 
   return (
     <section className="register-section">
-      <h3 className="register-title">Register</h3>
-      <Formik
-        initialValues={{ ...user }}
-        validationSchema={RegisterSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ values, errors, touched, isValid, dirty }) => (
-          <Form className="register-form">
-            <label htmlFor="username">Username:</label>
-            <Field
-              name="username"
-              placeholder="Enter your Username"
-              className="register-user"
-            />
-            {errors.username && touched.username ? (
-              <p className="alert">{errors.username}</p>
-            ) : null}
-            <label htmlFor="email">Email:</label>
-            <Field
-              name="email"
-              className="register-email"
-              placeholder="Enter your Email"
-            />
-            {errors.email && touched.email ? (
-              <p className="alert">{errors.email}</p>
-            ) : null}
-            <label>Password:</label>
-            <Field
-              type="password"
-              name="password"
-              className="register-pas"
-              placeholder="Enter your Password"
-              value={values.password}
-            />
-            {errors.password && touched.password ? (
-              <p className="alert">{errors.password}</p>
-            ) : null}
-            <label>Repeat-Password:</label>
-            <Field
-              type="password"
-              name="rePass"
-              className="register-pas"
-              placeholder="Repeat your Password"
-              value={values.rePass}
-            />
-            {errors.rePass && touched.rePass ? (
-              <p className="alert">{errors.rePass}</p>
-            ) : null}
-            <button
-              type="submit"
-              disabled={!(isValid && dirty)}
-              className={
-                !(isValid && dirty) ? "inactive-register" : "register-btn"
-              }
-            >
-              Register
-            </button>
-            <p className="register-text">Already have account? </p>
-            <Link className="register-link" to="/login">
-              Login
-            </Link>
-          </Form>
-        )}
-      </Formik>
+      <div className="register-section-container">
+        <div className="register-img-container">
+          <img
+            className="register-img"
+            src="https://img.freepik.com/free-photo/hungry-greedy-afro-american-girl-bites-big-delicious-piece-cake-poses-table-with-many-yummy-desserts-has-sweet-breakfast-home-unhealthy-nutrition-isolated-blue-wall_273609-34535.jpg?w=1380&t=st=1666713924~exp=1666714524~hmac=b8718c39ab8b2f31c1f2524215dd2fdd115945800805fe00b32e07492766f615"
+          ></img>
+        </div>
+        <div className="register-form-container">
+          <h3 className="register-title">Register</h3>
+          <Formik
+            initialValues={{ ...user }}
+            validationSchema={RegisterSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values, errors, touched, isValid, dirty }) => (
+              <Form className="register-form">
+                <label htmlFor="username">Username:</label>
+                <Field
+                  name="username"
+                  placeholder="Enter your Username"
+                  className="register-user"
+                />
+                {errors.username && touched.username ? (
+                  <p className="alert">{errors.username}</p>
+                ) : null}
+                <label htmlFor="email">Email:</label>
+                <Field
+                  name="email"
+                  className="register-email"
+                  placeholder="Enter your Email"
+                />
+                {errors.email && touched.email ? (
+                  <p className="alert">{errors.email}</p>
+                ) : null}
+                <label>Password:</label>
+                <Field
+                  type="password"
+                  name="password"
+                  className="register-pas"
+                  placeholder="Enter your Password"
+                  value={values.password}
+                />
+                {errors.password && touched.password ? (
+                  <p className="alert">{errors.password}</p>
+                ) : null}
+                <label>Repeat-Password:</label>
+                <Field
+                  type="password"
+                  name="rePass"
+                  className="register-pas"
+                  placeholder="Repeat your Password"
+                  value={values.rePass}
+                />
+                {errors.rePass && touched.rePass ? (
+                  <p className="alert">{errors.rePass}</p>
+                ) : null}
+                <button
+                  type="submit"
+                  disabled={!(isValid && dirty)}
+                  className={
+                    !(isValid && dirty) ? "inactive-register" : "register-btn"
+                  }
+                >
+                  Register
+                </button>
+                <p className="register-text">Already have account? </p>
+                <Link className="register-link" to="/login">
+                  Login
+                </Link>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </div>
     </section>
   );
 };
