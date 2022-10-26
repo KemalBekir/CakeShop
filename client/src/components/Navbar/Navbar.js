@@ -39,14 +39,14 @@ const Navbar = () => {
                 Catalogue
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 style={{ textDecoration: "none", color: "white" }}
                 to="/catalog/search"
               >
                 Search
               </Link>
-            </li>
+            </li> */}
             {user.email ? (
               <div className="user">
                 <li>

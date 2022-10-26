@@ -33,7 +33,7 @@
   
   .create-name,
   .create-desc,
-  .create-location,
+  .create-type,
   .create-tel,
   .create-price,
   .create-img {
@@ -44,7 +44,7 @@
   
   .create-name::placeholder,
   .create-desc::placeholder,
-  .create-location::placeholder,
+  .create-type::placeholder,
   .create-tel::placeholder,
   .create-price::placeholder,
   .create-img::placeholder {
@@ -56,6 +56,23 @@
   .create-desc {
     height: 120px;
   }
+
+  .create-offer-label {
+    display: flex;
+    align-items: center;
+  }
+
+  .create-offer {
+    margin-left: 1rem;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .create-offer :checked {
+    background: #31c48d;
+  }
+
+
   
   .create-btn {
     margin: 1rem 0;
