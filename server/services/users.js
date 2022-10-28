@@ -48,7 +48,8 @@ function createSession(user) {
         accessToken: jwt.sign(
             {
                 email: user.email,
-                _id: user._id
+                _id: user._id,
+                role: user.role
             },
             process.env.JWT_SECRET
         )
@@ -64,6 +65,7 @@ function verifySession(token) {
     return {
         email: payload.email,
         _id: payload._id,
+        role: payload.role,
         token: token,
     };
 }

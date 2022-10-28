@@ -45,9 +45,10 @@ const Create = () => {
     catalogServices.createCake(cakeData, user.accessToken).then((result) => {
       if (result.message) {
         //TODO: Notification success
+        console.log(result.message);
       } else {
         //TODO: Notification error
-        navigate("/catalog");
+        navigate("/catalogue");
       }
     });
   };
@@ -61,11 +62,11 @@ const Create = () => {
         <div className="create-form-container">
           <h3 className="create-title">Create</h3>
           <Formik
-            initialValues={{ ...cake }}
+            initialValues={{ ...cake, onOffer: false, }}
             validationSchema={CreateSchema}
             onSubmit={onSubmit}
           >
-            {({ values, errors, touched, isValid, dirty }) => (
+            {({ values, errors, touched, isValid, dirty,}) => (
               <Form className="create-form">
                 <label htmlFor="cakeName">Name of Cake:</label>
                 <Field

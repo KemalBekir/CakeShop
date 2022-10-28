@@ -7,7 +7,7 @@ const CatalogCard = ({ cake }) => {
     <>
       <div className="catalog-card-container">
         <div className="catalog-img-container">
-          <img className="catalog-card-img" src={cake.img} alt="" />
+          <img className="catalog-card-img" src={cake.imgOne} alt="" />
         </div>
         <div className="catalog-card">
           <h5 className="catalog-card-title">
