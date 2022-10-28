@@ -34,7 +34,7 @@ const Navbar = () => {
             <li>
               <Link
                 style={{ textDecoration: "none", color: "white" }}
-                to="/catalog"
+                to="/catalogue"
               >
                 Catalogue
               </Link>

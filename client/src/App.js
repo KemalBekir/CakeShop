@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import Register from "./components/Register/Register";
 import Create from "./components/Create/Create";
+import Catalog from "./components/Catalog/Catalog";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
             <Route path="/create" element={<Create />} />
+            <Route path="/catalogue" element={<Catalog />} />
           </Routes>
         </main>
       </AuthProvider>
