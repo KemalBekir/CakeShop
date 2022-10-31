@@ -24,7 +24,7 @@ const CatalogCard = ({ cake }) => {
             <Moment format="MMMM Do YY, h:mm a">{cake.updatedAt}</Moment>
           </p> */}
         </div>
-        <Link className="catalog-card-link" to={`/details/${cake._id}`}>
+        <Link className="catalog-card-link" to={`/catalogue/details/${cake._id}`}>
           Details
         </Link>
       </div>
