@@ -34,14 +34,14 @@ const Details = () => {
       {/* ) : ( */}
       <div className="details-container">
         <div className="details-img-container">
-          {/* <img className="details-img" src={cake.img} alt={cake.desc}></img> */}
+          <img className="details-img" src={cake.imgOne} alt={cake.desc}></img>
         </div>
         <div className="details-info-container">
           <h2 className="details-title">{cake.cakeName}</h2>
           <ul className="details-info-list">
             <li className="details-info-cake">
               <span className="details-info-accent">Description: </span>
-              <p>{cake.description}</p>
+              <p>{cake.desc}</p>
             </li>
             <li className="details-info-cake">
               <p>
@@ -56,15 +56,14 @@ const Details = () => {
               </p>
             </li>
           </ul>
-        </div>
-
-        <div className="details-btn-wrapper">
-          <Link className="details-btn-edit" to={`/details/${cake._id}/edit`}>
-            Edit
-          </Link>
-          <button onClick={deleteHandler} className="details-btn-delete">
-            Delete
-          </button>
+          <div className="details-btn-wrapper">
+            <Link className="details-btn-edit" to={`/details/${cake._id}/edit`}>
+              Edit
+            </Link>
+            <button onClick={deleteHandler} className="details-btn-delete">
+              Delete
+            </button>
+          </div>
         </div>
       </div>
       {/* //   )} */}
