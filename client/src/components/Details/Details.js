@@ -46,7 +46,7 @@ const Details = () => {
             <li className="details-info-cake">
               <p>
                 <span className="details-info-accent">Price: </span>
-                {cake.price}
+                {`£${cake.price}`}
               </p>
             </li>
             <li className="details-info-cake">
