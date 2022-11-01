@@ -27,8 +27,8 @@ export async function search(text) {
   }).then((data) => data.json());
 }
 
-export async function myAds(token) {
-  return fetch(`${catalogUrl}/myAds`, {
+export async function myCakes(token) {
+  return fetch(`${catalogUrl}/myCakes`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

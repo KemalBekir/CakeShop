@@ -17,8 +17,8 @@ async function getAllAsc() {
   return Cake.find({}).sort({ price: "asc" });
 }
 
-async function getAllCakesByOwner(ownwerId) {
-  return Cake.find({ owner: ownerId }).sort("");
+async function getAllCakesByOwner(owner) {
+  return Cake.find({ owner }).sort("");
 }
 
 async function getById(id) {
