@@ -30,9 +30,11 @@ const Profile = () => {
         </h2>
       </div>
       <div className="profile-list-container">
-        {cakes.map((x) => (
-          <CatalogCard key={x._id} cake={x} />
-        ))}
+        <div className="profile-list">
+          {cakes.map((x) => (
+            <CatalogCard key={x._id} cake={x} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,29 @@
+.profile-section {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.profile-container {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.profile-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.profile-list-container {
+   width: 90%;
+   margin: 1.5rem auto;
+   align-items: center;
+}
+
+.profile-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
