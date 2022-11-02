@@ -38,7 +38,7 @@
 .catalog-search-btn{
     height: 100%;
     border: none;
-    background-color: white;
+    background-color: black;
     padding-right: 1rem;
     font-size: 1.8rem;
     border-top-right-radius: 1rem;
@@ -49,10 +49,10 @@
 .catalog-title {
     width: 100%;
     text-align: center;
-    color: white;
+    color: black;
     font-size: 2.5rem;
     padding-bottom: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
     border-bottom: 2px solid white;
 }
 

@@ -9,6 +9,10 @@ async function getTopFive() {
   return Cake.find({}).sort({ createdAt: "desc" }).limit(5);
 }
 
+async function getCakesOnOffer(){
+  return Cake.find({onOffer: true});
+}
+
 async function getAllDesc() {
   return Cake.find({}).sort({ price: "desc" });
 }
@@ -89,4 +93,5 @@ module.exports = {
   getAllDesc,
   getAllAsc,
   isLiked,
+  getCakesOnOffer,
 };
