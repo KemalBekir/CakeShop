@@ -18,6 +18,15 @@ export async function getTopFive() {
   }).then((data) => data.json());
 }
 
+export async function getCakesOnOffer(){
+  return fetch(`${catalogUrl}/deals`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then((data) => data.json());
+}
+
 export async function search(text) {
   return fetch(`${catalogUrl}/search?text=${text}`, {
     method: "GET",

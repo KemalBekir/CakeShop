@@ -1,10 +1,11 @@
 import React from "react";
+import OnOffer from "../onOffer/OnOffer";
 import "./Home.css";
 
 const Home = () => {
   return (
     <section className="home-container">
-      <article className="home-section">
+      <div className="home-section">
         <div className="home-img-container">
           <img
             className="home-img"
@@ -12,7 +13,8 @@ const Home = () => {
             alt="cake covered on top with chocolate"
           ></img>
         </div>
-      </article>
+      </div>
+      <OnOffer/>
     </section>
   );
 };

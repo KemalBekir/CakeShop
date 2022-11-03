@@ -10,6 +10,7 @@ import Create from "./components/Create/Create";
 import Catalog from "./components/Catalog/Catalog";
 import Details from "./components/Details/Details";
 import Profile from "./components/Profile/Profile";
+import OnOffer from "./components/onOffer/OnOffer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/catalogue" element={<Catalog />} />
             <Route path="/catalogue/details/:cakeId" element={<Details />} />
+            {/* <Route path="/catalogue/deals" element={<OnOffer />} /> */}
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>

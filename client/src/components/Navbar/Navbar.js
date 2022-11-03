@@ -42,9 +42,9 @@ const Navbar = () => {
             {/* <li>
               <Link
                 style={{ textDecoration: "none", color: "white" }}
-                to="/catalog/search"
+                to="/catalogue/deals"
               >
-                Search
+                Deals
               </Link>
             </li> */}
             {user.email ? (

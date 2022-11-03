@@ -1,0 +1,11 @@
+.offer-section {
+    width: 100%;
+    height: 70vh;
+    margin-top: 3rem;
+}
+
+.offer-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
