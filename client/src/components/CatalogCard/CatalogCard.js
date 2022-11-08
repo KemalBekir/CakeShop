@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import "./CatalogCard.css";
+import React from "react";
 
 const CatalogCard = ({ cake }) => {
   return (

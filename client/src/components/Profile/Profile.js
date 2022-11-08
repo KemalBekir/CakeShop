@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/authContext";
 import * as UserService from "../../services/userService";
 import * as CatalogService from "../../services/catalogServices";
 import "./Profile.css";
+import React from "react";
 import CatalogCard from "../CatalogCard/CatalogCard";
 
 const Profile = () => {

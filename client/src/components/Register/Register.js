@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import * as userService from "../../services/userService";
+import React from "react";
 import "./Register.css";
 
 const RegisterSchema = Yup.object().shape({

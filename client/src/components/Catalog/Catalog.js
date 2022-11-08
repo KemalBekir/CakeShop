@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import * as catalogService from "../../services/catalogServices";
 import CatalogCard from "../CatalogCard/CatalogCard";
 import "./Catalog.css";
+import React from "react";
 
 const Catalog = () => {
   const [cake, setCake] = useState([]);

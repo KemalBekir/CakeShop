@@ -11,6 +11,7 @@ import Catalog from "./components/Catalog/Catalog";
 import Details from "./components/Details/Details";
 import Profile from "./components/Profile/Profile";
 import OnOffer from "./components/onOffer/OnOffer";
+import React from "react";
 
 function App() {
   return (

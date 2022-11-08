@@ -2,7 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import * as CatalogServices from "../../services/catalogServices";
+import React from "react";
 import "./Details.css";
+import ImageSlider from "../ImageSlider/ImageSlider";
 
 const Details = () => {
   const [cake, setCake] = useState({});
@@ -34,7 +36,8 @@ const Details = () => {
       {/* ) : ( */}
       <div className="details-container">
         <div className="details-img-container">
-          <img className="details-img" src={cake.imgOne} alt={cake.desc}></img>
+          <ImageSlider cakes={cake} />
+          {/* <img className="details-img" src={cake.imgOne} alt={cake.desc}></img> */}
         </div>
         <div className="details-info-container">
           <h2 className="details-title">{cake.cakeName}</h2>

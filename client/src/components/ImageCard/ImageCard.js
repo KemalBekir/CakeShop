@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React from "react";
 import "./ImageCard.css";
 
 const ImageCard = ({ cake }) => {
