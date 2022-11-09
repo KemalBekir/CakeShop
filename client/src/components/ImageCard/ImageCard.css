@@ -11,6 +11,13 @@
   cursor: pointer;
 }
 
+.image-card-container {
+  height: 70%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  overflow: hidden;
+}
+
 .image {
   height: 40vh;
   width: 100%;

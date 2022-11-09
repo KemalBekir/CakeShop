@@ -51,6 +51,7 @@ const dotStyle = {
 const ImageSlider = ({ cakes }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [];
+
   if (cakes.imgOne) {
     images.push(cakes.imgOne);
   }
@@ -85,28 +86,38 @@ const ImageSlider = ({ cakes }) => {
     backgroundImage: `url(${images[currentIndex]})`,
   };
 
+
+
   return (
     <div style={sliderStyles}>
-      <div>
-        <div onClick={goToPrevious} style={leftArrowStyles}>
-          ❰
-        </div>
-        <div onClick={goToNext} style={rightArrowStyles}>
-          ❱
-        </div>
-      </div>
-      <div style={slideStylesWidthBackground}></div>
-      <div style={dotsContainerStyles}>
-        {images.map((image, slideIndex) => (
-          <div
-            style={dotStyle}
-            key={slideIndex}
-            onClick={() => goToSlide(slideIndex)}
-          >
-            ●
+      {images.length > 1 ? (
+        <>
+          <div>
+            <div onClick={goToPrevious} style={leftArrowStyles}>
+              ❰
+            </div>
+            <div onClick={goToNext} style={rightArrowStyles}>
+              ❱
+            </div>
           </div>
-        ))}
-      </div>
+        </>
+      ) : null}
+      <div style={slideStylesWidthBackground}></div>
+      {images.length > 1 ? (
+        <>
+          <div style={dotsContainerStyles}>
+            {images.map((image, slideIndex) => (
+              <div
+                style={dotStyle}
+                key={slideIndex}
+                onClick={() => goToSlide(slideIndex)}
+              >
+                ●
+              </div>
+            ))}
+          </div>
+        </>
+      ) : null}
     </div>
   );
 };
