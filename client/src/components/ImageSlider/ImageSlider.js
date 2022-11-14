@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./ImageSlider.css";
 
 const slideStyles = {
   width: "100%",
@@ -48,6 +49,16 @@ const dotStyle = {
   color: "white",
 };
 
+const activeDotStyle = {
+  margin: "0 5px",
+  cursor: "pointer",
+  fontSize: "20px",
+  opacity: "1",
+  transitionDuration: "1s",
+  transform: "scale(1.08)",
+  color: "#31c48d",
+};
+
 const ImageSlider = ({ cakes }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [];
@@ -86,8 +97,6 @@ const ImageSlider = ({ cakes }) => {
     backgroundImage: `url(${images[currentIndex]})`,
   };
 
-
-
   return (
     <div style={sliderStyles}>
       {images.length > 1 ? (
@@ -108,7 +117,7 @@ const ImageSlider = ({ cakes }) => {
           <div style={dotsContainerStyles}>
             {images.map((image, slideIndex) => (
               <div
-                style={dotStyle}
+                style={slideIndex === currentIndex ? activeDotStyle : dotStyle}
                 key={slideIndex}
                 onClick={() => goToSlide(slideIndex)}
               >

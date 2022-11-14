@@ -11,11 +11,13 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="nav-logo-container">
           <span className="nav-logo">
-            <img
-              className="logo"
-              src="/assets/logo-no-background.svg"
-              alt="company logo"
-            />
+            <Link style={{ textDecoration: "none", color: "white" }} to="/">
+              <img
+                className="logo"
+                src="/assets/logo-no-background.svg"
+                alt="company logo"
+              />
+            </Link>
             {/* <Link
           style={{ textDecoration: "none", color: "white", width: "35%" }}
           to="/"
