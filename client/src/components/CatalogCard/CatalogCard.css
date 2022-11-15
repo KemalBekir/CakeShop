@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   grid-area: card;
-  width: calc((100% / 5) - 1.5rem);
+  width: calc((100% / 4) - 1.5rem);
   -webkit-box-shadow: 0px 8px 14px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 8px 14px 5px rgba(0, 0, 0, 0.3);
   flex-wrap: wrap;
@@ -10,6 +10,7 @@
   margin-bottom: 2rem;
   border-radius: 1rem;
   overflow: hidden;
+  /* flex: 4; */
 }
 
 .catalog-card {
