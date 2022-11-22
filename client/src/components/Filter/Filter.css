@@ -1,0 +1,9 @@
+
+  
+  .catalog-category-list {
+      cursor: pointer;
+  }
+  
+  .active {
+      font-weight: bold;
+  }
