@@ -2,6 +2,11 @@
   cursor: pointer;
 }
 
+.catalog-category-item {
+    padding-bottom: 2px;
+}
 .active {
   font-weight: bold;
+  font-size: 1.2rem;
+  color: #31c48d;
 }

@@ -5,9 +5,9 @@ const Filter = ({active,category,onClick }) => {
   return (
     <li
     onClick={onClick}
-      className={active ? 'active' : ''}
+      className={active ? 'catalog-category-item active' : 'catalog-category-item'}
     >
-      {category}
+      {category.toUpperCase()}
     </li>
   );
 };
