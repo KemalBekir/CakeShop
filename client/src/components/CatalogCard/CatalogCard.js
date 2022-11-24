@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Moment from "react-moment";
 import "./CatalogCard.css";
 import React from "react";
@@ -6,7 +7,14 @@ import React from "react";
 const CatalogCard = ({ cake }) => {
   return (
     <>
-      <div className="catalog-card-container">
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{duration: 0.5}}
+        Layout
+        className="catalog-card-container"
+      >
         <div className="catalog-img-container">
           <img className="catalog-card-img" src={cake.imgOne} alt="" />
         </div>
@@ -31,7 +39,7 @@ const CatalogCard = ({ cake }) => {
         >
           Details
         </Link>
-      </div>
+      </motion.div>
     </>
   );
 };

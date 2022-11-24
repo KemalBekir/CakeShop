@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Filter from "../Filter/Filter";
 import * as catalogService from "../../services/catalogServices";
 import CatalogCard from "../CatalogCard/CatalogCard";
@@ -33,20 +34,20 @@ const Catalog = () => {
     );
   }, []);
 
-  const filterByType = (e) => {
-    selected = e.target.textContent;
-    if (!e.currentTarget.classList.contains("active")) {
-      if (e.currentTarget.textContent === selected) {
-        e.currentTarget.classList.add("active");
-        return;
-      }
-      e.currentTarget.classList.add("active");
-      setIsActive(true);
-    }
+  // const filterByType = (e) => {
+  //   selected = e.target.textContent;
+  //   if (!e.currentTarget.classList.contains("active")) {
+  //     if (e.currentTarget.textContent === selected) {
+  //       e.currentTarget.classList.add("active");
+  //       return;
+  //     }
+  //     e.currentTarget.classList.add("active");
+  //     setIsActive(true);
+  //   }
 
-    //e.currentTarget.classList.toggle('active');
-    setActiveType(selected);
-  };
+  //   //e.currentTarget.classList.toggle('active');
+  //   setActiveType(selected);
+  // };
   useEffect(() => {
     if (activeType === "All") {
       setFiltered(cake);
@@ -73,17 +74,27 @@ const Catalog = () => {
           <h3 className="catalog-categories">Categories:</h3>
           <ul className="catalog-category-list">
             {categories.map((x, i) => (
-              <Filter key={i} category={x} active={x === activeType} onClick={()=> setActiveType(x)}/>
+              <Filter
+                key={i}
+                category={x}
+                active={x === activeType}
+                onClick={() => setActiveType(x)}
+              />
             ))}
           </ul>
         </div>
-        <div className="catalog-content">
-          {filtered.length > 0 ? (
-            filtered.map((x) => <CatalogCard key={x._id} cake={x} />)
-          ) : (
-            <h3 style={{ color: "white" }}>No listings currently</h3>
-          )}
-        </div>
+        <motion.div Layout className="catalog-content">
+          {/* {filtered.length > 0 ? ( */}
+          <AnimatePresence>
+            {/* {" "} */}
+            {filtered.map((x) => (
+              <CatalogCard key={x._id} cake={x} />
+            ))}
+          </AnimatePresence>
+          {/* ) : ( */}
+          {/* <h3 style={{ color: "white" }}>No listings currently</h3> */}
+          {/* )} */}
+        </motion.div>
         {/* </>
         )} */}
       </div>
