@@ -26,6 +26,10 @@ const EditSchema = Yup.object().shape({
 });
 
 const Edit = () => {
+  const { cakeId } = useParams();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [cake, setCake] = useState({
     cakeName: "",
     desc: "",
@@ -39,20 +43,25 @@ const Edit = () => {
     discount: 0,
   });
 
-  const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  useEffect(() => {
+    catalogServices.getCakeById(cakeId).then((result) => {
+      setCake(result);
+    });
+  }, []);
 
   const onSubmit = (values) => {
     const cakeData = values;
-    catalogServices.editCake(cakeData, user.accessToken).then((result) => {
-      if (result.message) {
-        //TODO: Notification success
-        console.log(result.message);
-      } else {
-        //TODO: Notification error
-        navigate("/catalogue");
-      }
-    });
+    catalogServices
+      .editCake(cakeId, cakeData, user.accessToken)
+      .then((result) => {
+        if (result.message) {
+          //TODO: Notification success
+          console.log(result.message);
+        } else {
+          //TODO: Notification error
+          navigate(`/catalogue/details/${cakeId}`);
+        }
+      });
   };
 
   return (
@@ -67,8 +76,20 @@ const Edit = () => {
         <div className="edit-form-container">
           <h3 className="edit-title">Edit</h3>
           <Formik
-            initialValues={{ ...cake, onOffer: false }}
+            initialValues={{
+              cakeName: cake.cakeName || "",
+              desc: cake.desc || "",
+              price: cake.price || 0,
+              type: cake.type || "",
+              imgOne: cake.imgOne || "",
+              imgTwo: cake.imgTwo || "",
+              imgThree: cake.imgThree || "",
+              imgFour: cake.imgFour || "",
+              onOffer: "false",
+              discount: 0,
+            }}
             validationSchema={EditSchema}
+            enableReinitialize={true}
             onSubmit={onSubmit}
           >
             {({ values, errors, touched, isValid, dirty }) => (

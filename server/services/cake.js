@@ -50,8 +50,10 @@ async function update(id, cake) {
   existing.desc = cake.desc;
   existing.price = cake.price;
   existing.type = cake.type;
-  existing.img = [...cake.img];
-  existing.likes = cake.likes.length;
+  existing.imgOne = cake.imgOne;
+  existing.imgTwo = cake.imgTwo;
+  existing.imgThree = cake.imgThree;
+  existing.imgFour = cake.imgFour;
   await existing.save();
 
   return existing;
