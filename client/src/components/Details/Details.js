@@ -60,7 +60,7 @@ const Details = () => {
             </li>
           </ul>
           <div className="details-btn-wrapper">
-            <Link className="details-btn-edit" to={`/details/${cake._id}/edit`}>
+            <Link className="details-btn-edit" to={`/catalogue/details/${cake._id}/edit`}>
               Edit
             </Link>
             <button onClick={deleteHandler} className="details-btn-delete">

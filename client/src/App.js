@@ -12,6 +12,7 @@ import Details from "./components/Details/Details";
 import Profile from "./components/Profile/Profile";
 import OnOffer from "./components/onOffer/OnOffer";
 import React from "react";
+import Edit from "./components/Edit/Edit";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/catalogue" element={<Catalog />} />
             <Route path="/catalogue/details/:cakeId" element={<Details />} />
+            <Route path="/catalogue/details/:cakeId/edit" element={<Edit />} />
             {/* <Route path="/catalogue/deals" element={<OnOffer />} /> */}
             <Route path="/profile" element={<Profile />} />
           </Routes>
