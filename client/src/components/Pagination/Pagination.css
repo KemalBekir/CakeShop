@@ -1,0 +1,19 @@
+.pagination-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination {
+  list-style: none;
+}
+
+.page-link {
+  background: #31c48d;
+  color: white;
+  display: inline-block;
+  padding: 2px 15px;
+  border: none;
+  cursor: pointer;
+}

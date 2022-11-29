@@ -5,12 +5,15 @@ import * as catalogService from "../../services/catalogServices";
 import CatalogCard from "../CatalogCard/CatalogCard";
 import "./Catalog.css";
 import React from "react";
+import Pagination from "../Pagination/Pagination";
 
 const Catalog = () => {
   const [cake, setCake] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [activeType, setActiveType] = useState("All");
   const [isActive, setIsActive] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cakesPerPage] = useState(12);
 
   let categories = [];
   let selected = "";
@@ -34,20 +37,6 @@ const Catalog = () => {
     );
   }, []);
 
-  // const filterByType = (e) => {
-  //   selected = e.target.textContent;
-  //   if (!e.currentTarget.classList.contains("active")) {
-  //     if (e.currentTarget.textContent === selected) {
-  //       e.currentTarget.classList.add("active");
-  //       return;
-  //     }
-  //     e.currentTarget.classList.add("active");
-  //     setIsActive(true);
-  //   }
-
-  //   //e.currentTarget.classList.toggle('active');
-  //   setActiveType(selected);
-  // };
   useEffect(() => {
     if (activeType === "All") {
       setFiltered(cake);
@@ -61,6 +50,12 @@ const Catalog = () => {
   useEffect(() => {
     data();
   }, []);
+
+  const indexOfLastCake = currentPage * cakesPerPage;
+  const indexOfFirstCake = indexOfLastCake - cakesPerPage;
+  const currentCake = filtered.slice(indexOfFirstCake, indexOfLastCake);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <section className="catalog-section">
@@ -90,6 +85,15 @@ const Catalog = () => {
             {filtered.map((x) => (
               <CatalogCard key={x._id} cake={x} />
             ))}
+            {filtered.length > cakesPerPage ? (
+              <Pagination
+                cakesPerPage={cakesPerPage}
+                totalCakes={filtered.length}
+                paginate={paginate}
+              />
+            ) : (
+              ""
+            )}
           </AnimatePresence>
           {/* ) : ( */}
           {/* <h3 style={{ color: "white" }}>No listings currently</h3> */}
