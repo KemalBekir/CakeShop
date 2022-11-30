@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile";
 import OnOffer from "./components/onOffer/OnOffer";
 import React from "react";
 import Edit from "./components/Edit/Edit";
+import PrivateRoute from "./components/Common/PrivateRoute";
 
 function App() {
   return (
@@ -23,15 +24,22 @@ function App() {
         <main id="site-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/create" element={<Create />} />
             <Route path="/catalogue" element={<Catalog />} />
             <Route path="/catalogue/details/:cakeId" element={<Details />} />
+            {/* UnAuthorized Routes */}
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            {/* Private Route */}
+            <Route element={<PrivateRoute />}>
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/profile" element={<Profile />} />
+            </Route>
+            {/* Owner Route */}
             <Route path="/catalogue/details/:cakeId/edit" element={<Edit />} />
             {/* <Route path="/catalogue/deals" element={<OnOffer />} /> */}
-            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
       </AuthProvider>
