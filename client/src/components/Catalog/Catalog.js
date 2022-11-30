@@ -16,7 +16,6 @@ const Catalog = () => {
   const [cakesPerPage] = useState(12);
 
   let categories = [];
-  let selected = "";
 
   if (cake.length > 0) {
     const result = cake.map((item) => item.type);
@@ -43,7 +42,7 @@ const Catalog = () => {
       return;
     }
     const filtered = cake.filter((c) => c.type === activeType);
-
+    currentCake = filtered.slice(indexOfFirstCake, indexOfLastCake);
     setFiltered(filtered);
   }, [activeType]);
 
@@ -53,7 +52,7 @@ const Catalog = () => {
 
   const indexOfLastCake = currentPage * cakesPerPage;
   const indexOfFirstCake = indexOfLastCake - cakesPerPage;
-  const currentCake = filtered.slice(indexOfFirstCake, indexOfLastCake);
+  let currentCake = filtered.slice(indexOfFirstCake, indexOfLastCake);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -82,7 +81,7 @@ const Catalog = () => {
           {/* {filtered.length > 0 ? ( */}
           <AnimatePresence>
             {/* {" "} */}
-            {filtered.map((x) => (
+            {currentCake.map((x) => (
               <CatalogCard key={x._id} cake={x} />
             ))}
             {filtered.length > cakesPerPage ? (
