@@ -85,7 +85,7 @@ const Edit = () => {
               imgTwo: cake.imgTwo || "",
               imgThree: cake.imgThree || "",
               imgFour: cake.imgFour || "",
-              onOffer: "false",
+              onOffer: cake.onOffer ,
               discount: 0,
             }}
             validationSchema={EditSchema}
@@ -192,7 +192,7 @@ const Edit = () => {
                     type="submit"
                     className={!(isValid && dirty) ? "inactive" : "edit-btn"}
                   >
-                    edit
+                    Edit
                   </button>
                 </div>
               </Form>

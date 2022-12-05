@@ -54,6 +54,7 @@ async function update(id, cake) {
   existing.imgTwo = cake.imgTwo;
   existing.imgThree = cake.imgThree;
   existing.imgFour = cake.imgFour;
+  existing.onOffer = cake.onOffer;
   await existing.save();
 
   return existing;

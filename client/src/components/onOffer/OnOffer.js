@@ -15,7 +15,7 @@ const OnOffer = () => {
 
   useEffect(() => {
     data();
-  }, [data]);
+  }, []);
 
   return (
     <section className="offer-section">
