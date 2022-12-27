@@ -40,6 +40,13 @@ const Navbar = () => {
               >
                 Catalogue
               </Link>
+            </li>     <li>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to="/catalogue/search"
+              >
+                Search
+              </Link>
             </li>
             {/* <li>
               <Link

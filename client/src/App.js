@@ -16,6 +16,7 @@ import Edit from "./components/Edit/Edit";
 import PrivateRoute from "./components/Common/PrivateRoute";
 import { CakesProvider } from "./contexts/cakeContext";
 import OwnerRoute from "./components/Common/OwnerRoute";
+import Search from "./components/Search/Search";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/catalogue" element={<Catalog />} />
               <Route path="/catalogue/details/:cakeId" element={<Details />} />
+              <Route path="/catalogue/search" element={<Search />} />
               {/* UnAuthorized Routes */}
 
               <Route path="/login" element={<Login />} />

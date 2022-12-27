@@ -67,7 +67,7 @@ async function deleteById(id) {
 async function searchFunction(text) {
   return Cake.find({
     $or: [
-      { name: { $regex: `${text}`, $options: "i" } },
+      { cakeName: { $regex: `${text}`, $options: "i" } },
       { type: { $regex: `${text}`, $options: "i" } },
     ],
     /*{$or: [{ name: {$regex: 'london', $options: 'i'}}, { location: {$regex: 'london', $options: 'i'}}]}*/
