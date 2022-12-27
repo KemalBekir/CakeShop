@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../Footer/Footer";
 import OnOffer from "../onOffer/OnOffer";
 import "./Home.css";
 
@@ -15,6 +16,7 @@ const Home = () => {
         </div>
       </div>
       <OnOffer/>
+      <Footer />
     </section>
   );
 };
