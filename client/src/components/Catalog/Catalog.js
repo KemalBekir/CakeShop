@@ -6,6 +6,7 @@ import CatalogCard from "../CatalogCard/CatalogCard";
 import "./Catalog.css";
 import React from "react";
 import Pagination from "../Pagination/Pagination";
+import Footer from "../Footer/Footer";
 
 const Catalog = () => {
   const [cake, setCake] = useState([]);
@@ -57,51 +58,54 @@ const Catalog = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <section className="catalog-section">
-      <div className="catalog-container">
-        {/* {isLoading ? (
+    <>
+      <section className="catalog-section">
+        <div className="catalog-container">
+          {/* {isLoading ? (
           <Spinner />
         ) : (
           <> */}
-        <h2 className="catalog-title">All listings</h2>
-        <div className="catalog-left-side">
-          <h3 className="catalog-categories">Categories:</h3>
-          <ul className="catalog-category-list">
-            {categories.map((x, i) => (
-              <Filter
-                key={i}
-                category={x}
-                active={x === activeType}
-                onClick={() => setActiveType(x)}
-              />
-            ))}
-          </ul>
-        </div>
-        <motion.div Layout className="catalog-content">
-          {/* {filtered.length > 0 ? ( */}
-          <AnimatePresence>
-            {/* {" "} */}
-            {currentCake.map((x) => (
-              <CatalogCard key={x._id} cake={x} />
-            ))}
-            {filtered.length > cakesPerPage ? (
-              <Pagination
-                cakesPerPage={cakesPerPage}
-                totalCakes={filtered.length}
-                paginate={paginate}
-              />
-            ) : (
-              ""
-            )}
-          </AnimatePresence>
-          {/* ) : ( */}
-          {/* <h3 style={{ color: "white" }}>No listings currently</h3> */}
-          {/* )} */}
-        </motion.div>
-        {/* </>
+          <h2 className="catalog-title">All listings</h2>
+          <div className="catalog-left-side">
+            <h3 className="catalog-categories">Categories:</h3>
+            <ul className="catalog-category-list">
+              {categories.map((x, i) => (
+                <Filter
+                  key={i}
+                  category={x}
+                  active={x === activeType}
+                  onClick={() => setActiveType(x)}
+                />
+              ))}
+            </ul>
+          </div>
+          <motion.div Layout className="catalog-content">
+            {/* {filtered.length > 0 ? ( */}
+            <AnimatePresence>
+              {/* {" "} */}
+              {currentCake.map((x) => (
+                <CatalogCard key={x._id} cake={x} />
+              ))}
+              {filtered.length > cakesPerPage ? (
+                <Pagination
+                  cakesPerPage={cakesPerPage}
+                  totalCakes={filtered.length}
+                  paginate={paginate}
+                />
+              ) : (
+                ""
+              )}
+            </AnimatePresence>
+            {/* ) : ( */}
+            {/* <h3 style={{ color: "white" }}>No listings currently</h3> */}
+            {/* )} */}
+          </motion.div>
+          {/* </>
         )} */}
-      </div>
-    </section>
+        </div>
+      </section>
+      <Footer />
+    </>
   );
 };
 

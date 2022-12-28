@@ -61,6 +61,8 @@
   padding-right: 2rem;
   font-size: 2rem;
   cursor: pointer;
+  text-shadow: 1px 2px 4px rgba(0,0,0,0.4);
+
 }
 
 .user {
