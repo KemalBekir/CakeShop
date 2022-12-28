@@ -12,7 +12,7 @@ const ImageCard = ({ cake }) => {
       </div>
       <Link
         to={`/catalogue/details/${cake._id}`}
-        style={{ textDecoration: "none", cursor: "pointer" }}
+        style={{ textDecoration: "none", cursor: "pointer", width: '100%' }}
       >
         <div className="image-content-container">
           <h3 className="image-title">Price: £{cake.price}</h3>

@@ -95,6 +95,7 @@ const ImageSlider = ({ cakes }) => {
   const slideStylesWidthBackground = {
     ...slideStyles,
     backgroundImage: `url(${images[currentIndex]})`,
+    transition: 'background 0.5s ease'
   };
 
   return (
