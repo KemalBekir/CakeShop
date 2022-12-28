@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./Search.css";
-import * as catalogService from '../../services/catalogServices';
+import * as catalogService from "../../services/catalogServices";
 import CatalogCard from "../CatalogCard/CatalogCard";
 
 const Search = () => {
@@ -32,7 +32,7 @@ const Search = () => {
         catalogService.search(searchTerm).then((result) => setCakes(result));
         setSearching(true);
       }, 600);
-    //   setLoading(false);
+      //   setLoading(false);
     } else if (searchTerm.length === 0) {
       catalogService.getAll().then((result) => setCakes(result));
     }
@@ -55,19 +55,17 @@ const Search = () => {
           ></input>
           <button className="search-search-btn">Search</button>
         </form>
-        {isSearching ? 
-         
-            <div className='search-result-container'>
-              <h2 className="search-title">Search Results</h2>
-              {cakes.length > 0 ? (
-                cakes.map((x) => <CatalogCard key={x._id} cake={x} />)
-              ) : (
-                <h3 style={{ color: "white" }}>No results</h3>
-              )}
-            </div>
-         
-        : (
-          ''
+        {isSearching ? (
+          <div className="search-result-container">
+            <h2 className="search-title">Search Results</h2>
+            {cakes.length > 0 ? (
+              cakes.map((x) => <CatalogCard key={x._id} cake={x} />)
+            ) : (
+              <h3 style={{ color: "white" }}>No results</h3>
+            )}
+          </div>
+        ) : (
+          ""
         )}
       </div>
     </section>
