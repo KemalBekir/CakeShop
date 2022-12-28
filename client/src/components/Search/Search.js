@@ -61,7 +61,7 @@ const Search = () => {
             {cakes.length > 0 ? (
               cakes.map((x) => <CatalogCard key={x._id} cake={x} />)
             ) : (
-              <h3 style={{ color: "white" }}>No results</h3>
+              <h3 style={{ color: "black", textAlign: 'center', width: '100%', fontSize: '2rem' }}>No results</h3>
             )}
           </div>
         ) : (
