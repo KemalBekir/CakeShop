@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const cors = require("./middleware/cors");
 const usersController = require('./controllers/users');
 const catalogController = require('./controllers/catalog');
+const chatController = require('./controllers/chat');
+const messageController = require('./controllers/message');
 const auth = require('./middleware/auth');
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -37,6 +39,8 @@ async function start() {
     app.use(auth());
     app.use('/users', usersController);
     app.use('/catalog', catalogController);
+    app.use('/chat', chatController);
+    app.use('/message', messageController);
 
     app.get('/', (req, res) => {
         res.json({ message: 'REST service operational' });
