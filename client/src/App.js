@@ -17,44 +17,51 @@ import PrivateRoute from "./components/Common/PrivateRoute";
 import { CakesProvider } from "./contexts/cakeContext";
 import OwnerRoute from "./components/Common/OwnerRoute";
 import Search from "./components/Search/Search";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className="body-container">
-      <AuthProvider>
-        <Navbar />
+    <>
+      <div className="body-container">
+        <AuthProvider>
+          <Navbar />
 
-        <main id="site-content">
-          <CakesProvider>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/catalogue" element={<Catalog />} />
-              <Route path="/catalogue/details/:cakeId" element={<Details />} />
-              <Route path="/catalogue/search" element={<Search />} />
-              {/* UnAuthorized Routes */}
-
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-
-              {/* Private Route */}
-              <Route element={<PrivateRoute />}>
-                <Route path="/logout" element={<Logout />} />
-                <Route path="/create" element={<Create />} />
-                <Route path="/profile" element={<Profile />} />
-              </Route>
-              {/* Owner Route */}
-              <Route element={<OwnerRoute />}>
+          <main id="site-content">
+            <CakesProvider>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/catalogue" element={<Catalog />} />
                 <Route
-                  path="/catalogue/details/:cakeId/edit"
-                  element={<Edit />}
+                  path="/catalogue/details/:cakeId"
+                  element={<Details />}
                 />
-              </Route>
-              {/* <Route path="/catalogue/deals" element={<OnOffer />} /> */}
-            </Routes>
-          </CakesProvider>
-        </main>
-      </AuthProvider>
-    </div>
+                <Route path="/catalogue/search" element={<Search />} />
+                {/* UnAuthorized Routes */}
+
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+
+                {/* Private Route */}
+                <Route element={<PrivateRoute />}>
+                  <Route path="/logout" element={<Logout />} />
+                  <Route path="/create" element={<Create />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Route>
+                {/* Owner Route */}
+                <Route element={<OwnerRoute />}>
+                  <Route
+                    path="/catalogue/details/:cakeId/edit"
+                    element={<Edit />}
+                  />
+                </Route>
+                {/* <Route path="/catalogue/deals" element={<OnOffer />} /> */}
+              </Routes>
+            </CakesProvider>
+          </main>
+        </AuthProvider>
+      </div>
+     
+    </>
   );
 }
 
