@@ -60,12 +60,21 @@ const Details = () => {
             </li>
           </ul>
           <div className="details-btn-wrapper">
-            <Link className="details-btn-edit" to={`/catalogue/details/${cake._id}/edit`}>
-              Edit
-            </Link>
-            <button onClick={deleteHandler} className="details-btn-delete">
-              Delete
-            </button>
+            {user._id === cake.owner._id ? (
+              <>
+                <Link
+                  className="details-btn-edit"
+                  to={`/catalogue/details/${cake._id}/edit`}
+                >
+                  Edit
+                </Link>
+                <button onClick={deleteHandler} className="details-btn-delete">
+                  Delete
+                </button>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

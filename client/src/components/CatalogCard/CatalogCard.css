@@ -3,15 +3,17 @@
   position: relative;
   flex-direction: column;
   grid-area: card;
-  width: 220px;
-  -webkit-box-shadow: 0px 8px 14px 5px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 8px 14px 5px rgba(0, 0, 0, 0.3);
+  width: 258px;
+  box-shadow: 0px 8px 14px 5px rgb(0 0 0 / 30%);
   height: 416px;
   flex-wrap: wrap;
   background-color: white;
   margin-bottom: 2rem;
   border-radius: 1rem;
   overflow: hidden;
+  flex: 4;
+  min-width: 258px;
+  max-width: 258px;
   /* flex: 4; */
 }
 
