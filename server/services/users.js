@@ -5,7 +5,7 @@ const blacklist = [];
 
 async function register(username, email, password) {
     const existing = await User.findOne({ email: new RegExp(`^${email}$`, "i") });
-
+    console.log('--->', existing);
     if (existing) {
         throw new Error("Email already exists");
     }

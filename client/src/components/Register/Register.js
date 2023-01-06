@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -9,7 +9,7 @@ import "./Register.css";
 
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
-    .min(5, "Username should be at least 5 characters long")
+    .min(3, "Username should be at least 3 characters long")
     .matches(
       /[a-zA-Z0-9]+/g,
       "Username must contain only latin letters and digits"
@@ -35,6 +35,7 @@ const Register = () => {
     password: "",
     rePass: "",
   });
+  const navigate = useNavigate();
 
   const { userLogin } = useContext(AuthContext);
 
@@ -46,6 +47,7 @@ const Register = () => {
       } else {
         //TODO: Success notification
         userLogin(authData);
+        navigate('/');
       }
     });
   };

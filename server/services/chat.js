@@ -2,6 +2,13 @@ const Chat = require("../models/chat");
 const User = require("../models/user");
 
 async function accessChat(userId, ownerId) {
+  const result = await createChat(userId, ownerId);
+  await result.save();
+
+  return result;
+}
+
+async function createChat(userId, ownerId) {
   let isChat = await Chat.find({
     isGroupChat: false,
     $and: [
@@ -17,13 +24,10 @@ async function accessChat(userId, ownerId) {
     select: "username",
   });
 
-  const result = await createChat(userId, ownerId);
-  await result.save();
+  if (isChat.length > 0) {
+    return isChat[0];
+  }
 
-  return result;
-}
-
-async function createChat(userId, ownerId) {
   let chatData = {
     chatName: "sender",
     isGroupChat: false,
@@ -39,19 +43,19 @@ async function createChat(userId, ownerId) {
   return FullChat;
 }
 
-async function getChats(userId){
-    const result = await Chat.find({ users: {$elemMatch: {$eq: userId}}})
-    .populate('users', '-password')
-    .populate('groupAdmin', '-password')
-    .populate('latestMessage')
-    .sort({ updatedAt: -1});
+async function getChats(userId) {
+  const result = await Chat.find({ users: { $elemMatch: { $eq: userId } } })
+    .populate("users", "-password")
+    .populate("groupAdmin", "-password")
+    .populate("latestMessage")
+    .sort({ updatedAt: -1 });
 
-    result = await User.populate(result, {
-        path: 'latestMessage.sender',
-        select: 'username',
-    });
+  result = await User.populate(result, {
+    path: "latestMessage.sender",
+    select: "username",
+  });
 
-    return result;
+  return result;
 }
 
 module.exports = {
