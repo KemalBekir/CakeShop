@@ -3,7 +3,6 @@ const User = require("../models/user");
 
 async function accessChat(userId, ownerId) {
   const result = await createChat(userId, ownerId);
-  console.log(result);
   await result.save();
 
   return result;

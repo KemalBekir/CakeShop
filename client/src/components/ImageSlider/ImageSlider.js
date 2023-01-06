@@ -14,7 +14,7 @@ const rightArrowStyles = {
   transform: "translate(0, -50%)",
   right: "15px",
   fontSize: "45px",
-  color: "white",
+  color: "#31c48d",
   zIndex: 1,
   cursor: "pointer",
 };
@@ -25,7 +25,7 @@ const leftArrowStyles = {
   transform: "translate(0, -50%)",
   left: "15px",
   fontSize: "45px",
-  color: "white",
+  color: "#31c48d",
   zIndex: 1,
   cursor: "pointer",
 };
@@ -46,7 +46,7 @@ const dotStyle = {
   margin: "0 5px",
   cursor: "pointer",
   fontSize: "20px",
-  color: "white",
+  color: "#31c48d",
 };
 
 const activeDotStyle = {
@@ -56,7 +56,7 @@ const activeDotStyle = {
   opacity: "1",
   transitionDuration: "1s",
   transform: "scale(1.08)",
-  color: "#31c48d",
+  color: "white",
 };
 
 const ImageSlider = ({ cakes }) => {
@@ -95,7 +95,7 @@ const ImageSlider = ({ cakes }) => {
   const slideStylesWidthBackground = {
     ...slideStyles,
     backgroundImage: `url(${images[currentIndex]})`,
-    transition: 'background 0.5s ease'
+    transition: "background 0.5s ease",
   };
 
   return (

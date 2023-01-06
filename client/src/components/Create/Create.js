@@ -46,7 +46,6 @@ const Create = () => {
     catalogServices.createCake(cakeData, user.accessToken).then((result) => {
       if (result.message) {
         //TODO: Notification success
-        console.log(result.message);
       } else {
         //TODO: Notification error
         navigate("/catalogue");
