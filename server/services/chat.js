@@ -3,6 +3,7 @@ const User = require("../models/user");
 
 async function accessChat(userId, ownerId) {
   const result = await createChat(userId, ownerId);
+  console.log(result);
   await result.save();
 
   return result;
@@ -16,14 +17,13 @@ async function createChat(userId, ownerId) {
       { users: { $elemMatch: { $eq: ownerId } } },
     ],
   })
-    .populate("users", "-password")
+    .populate("users", "-hashedPassword -role")
     .populate("latestMessage");
 
   isChat = await User.populate(isChat, {
     path: "latestMessage.sender",
     select: "username",
   });
-
   if (isChat.length > 0) {
     return isChat[0];
   }
@@ -45,8 +45,8 @@ async function createChat(userId, ownerId) {
 
 async function getChats(userId) {
   const result = await Chat.find({ users: { $elemMatch: { $eq: userId } } })
-    .populate("users", "-password")
-    .populate("groupAdmin", "-password")
+    .populate("users", "-hashedPassword -role", )
+    .populate("groupAdmin", "-hashedPassword -role", )
     .populate("latestMessage")
     .sort({ updatedAt: -1 });
 
