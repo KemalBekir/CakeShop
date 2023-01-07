@@ -10,6 +10,7 @@ const Details = () => {
   const [cake, setCake] = useState({});
   const { user } = useContext(AuthContext);
   const { cakeId } = useParams();
+  const [isOnwer, setIsOwner] = useState(false);
   const navigate = useNavigate();
   const deleteHandler = () => {
     const confirm = window.confirm(
@@ -26,6 +27,9 @@ const Details = () => {
 
   useEffect(() => {
     CatalogServices.getCakeById(cakeId).then((result) => {
+      if(user._id === result.owner._id){
+        setIsOwner(true);
+      }
       setCake(result);
     });
   }, [cakeId]);
@@ -36,7 +40,7 @@ const Details = () => {
       {/* ) : ( */}
       <div className="details-container">
         <div className="details-img-container">
-          <ImageSlider cakes={cake} />
+          <ImageSlider cakes={cake} parentWidth={610}/>
           {/* <img className="details-img" src={cake.imgOne} alt={cake.desc}></img> */}
         </div>
         <div className="details-info-container">
@@ -60,7 +64,7 @@ const Details = () => {
             </li>
           </ul>
           <div className="details-btn-wrapper">
-            {user._id === cake.owner._id ? (
+            {isOnwer ? (
               <>
                 <Link
                   className="details-btn-edit"

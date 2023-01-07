@@ -7,7 +7,7 @@ const ImageCard = ({ cake }) => {
   return (
     <div className="image-card">
       <div className="image-card-container">
-        <ImageSlider cakes={cake} />
+        <ImageSlider cakes={cake} parentWidth={332}/>
         {/* <img className="image" src={cake.imgOne} alt={cake.desc} /> */}
       </div>
       <Link

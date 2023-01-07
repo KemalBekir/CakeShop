@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./ImageSlider.css";
 
 const slideStyles = {
@@ -49,6 +49,17 @@ const dotStyle = {
   color: "#31c48d",
 };
 
+const slidesContainerStyles = {
+  display: "flex",
+  height: "100%",
+  transition: "transform ease-out 0.3s",
+};
+
+const slidesContainerOverflowStyles = {
+  overflow: "hidden",
+  height: "100%",
+};
+
 const activeDotStyle = {
   margin: "0 5px",
   cursor: "pointer",
@@ -59,7 +70,8 @@ const activeDotStyle = {
   color: "white",
 };
 
-const ImageSlider = ({ cakes }) => {
+const ImageSlider = ({ cakes, parentWidth }) => {
+  const timerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [];
 
@@ -84,19 +96,38 @@ const ImageSlider = ({ cakes }) => {
     const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
-  const goToNext = () => {
+
+  const goToNext = useCallback(() => {
     const isLastSlide = currentIndex === images.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-  };
+  }, [currentIndex, images]);
+
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-  const slideStylesWidthBackground = {
+
+  const getSlidesStylesWithBackground = (slideIndex) => ({
     ...slideStyles,
-    backgroundImage: `url(${images[currentIndex]})`,
-    transition: "background 0.5s ease",
-  };
+    backgroundImage: `url(${images[slideIndex]})`,
+    width: `${parentWidth}px`,
+  });
+
+  const getSlidesContainerStylesWithWidth = () => ({
+    ...slidesContainerStyles,
+    width: parentWidth * images.length,
+    transform: `translateX(${-(currentIndex * parentWidth)}px)`,
+  });
+
+  useEffect(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(() => {
+      goToNext();
+    }, 3000);
+  }, [goToNext]);
+
 
   return (
     <div style={sliderStyles}>
@@ -112,22 +143,27 @@ const ImageSlider = ({ cakes }) => {
           </div>
         </>
       ) : null}
-      <div style={slideStylesWidthBackground}></div>
-      {images.length > 1 ? (
-        <>
-          <div style={dotsContainerStyles}>
-            {images.map((image, slideIndex) => (
-              <div
-                style={slideIndex === currentIndex ? activeDotStyle : dotStyle}
-                key={slideIndex}
-                onClick={() => goToSlide(slideIndex)}
-              >
-                ●
-              </div>
-            ))}
+      <div style={slidesContainerOverflowStyles}>
+        <div style={getSlidesContainerStylesWithWidth()}>
+          {images.map((_, slideIndex) => (
+            <div
+              key={slideIndex}
+              style={getSlidesStylesWithBackground(slideIndex)}
+            ></div>
+          ))}
+        </div>
+      </div>
+      <div style={dotsContainerStyles}>
+        {images.map((image, slideIndex) => (
+          <div
+            style={slideIndex === currentIndex ? activeDotStyle : dotStyle}
+            key={slideIndex}
+            onClick={() => goToSlide(slideIndex)}
+          >
+            ●
           </div>
-        </>
-      ) : null}
+        ))}
+      </div>
     </div>
   );
 };
