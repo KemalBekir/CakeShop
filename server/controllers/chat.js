@@ -1,13 +1,12 @@
 const { isAuth } = require("../middleware/guards");
 const preload = require("../middleware/preload");
 
-const { accessChat } = require("../services/chat");
+const { accessChat, getChats } = require("../services/chat");
 const mapErrors = require("../utils/mappers");
 
 const router = require("express").Router();
 
-router.post("/", isAuth(),  async (req, res) => {
-    
+router.post("/", isAuth(), async (req, res) => {
   try {
     const userId = req.user._id;
     const ownerId = req.body.ownerId;
@@ -16,11 +15,20 @@ router.post("/", isAuth(),  async (req, res) => {
   } catch (err) {
     console.error(err);
     const error = mapErrors(err);
-    res.status(400).json({ message: error});
+    res.status(400).json({ message: error });
   }
 });
 
-// router.get("/", isAuth(), async (req, res) => {});
+router.get("/", isAuth(), async (req, res) => {
+  try {
+    const result = await getChats(req.user._id);
+    res.status(200).json(result);
+  } catch (err) {
+    console.error(err);
+    const error = mapErrors(err);
+    res.status(400).json({ message: error });
+  }
+});
 
 // router.post("/group", isAuth(), async (req, res) => {});
 

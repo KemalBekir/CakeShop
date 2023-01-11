@@ -43,9 +43,9 @@ async function createChat(userId, ownerId) {
 }
 
 async function getChats(userId) {
-  const result = await Chat.find({ users: { $elemMatch: { $eq: userId } } })
-    .populate("users", "-hashedPassword -role", )
-    .populate("groupAdmin", "-hashedPassword -role", )
+  let result = await Chat.find({ users: { $elemMatch: { $eq: userId } } })
+    .populate("users", "-hashedPassword -role -myAds", )
+    .populate("groupAdmin", "-hashedPassword -role -myAds", )
     .populate("latestMessage")
     .sort({ updatedAt: -1 });
 
