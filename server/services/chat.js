@@ -16,7 +16,7 @@ async function createChat(userId, ownerId) {
       { users: { $elemMatch: { $eq: ownerId } } },
     ],
   })
-    .populate("users", "-hashedPassword -role")
+    .populate("users", "-hashedPassword -role -myAds")
     .populate("latestMessage");
 
   isChat = await User.populate(isChat, {

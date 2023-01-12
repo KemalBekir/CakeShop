@@ -6,7 +6,7 @@ const router = require("express").Router();
 
 router.get("/:chatId", isAuth(), async (req, res) => {
   const chatId = req.params.chatId;
-
+    console.log(req.params);
   try {
     const result = await getAllMessages(chatId);
     res.json(result);
@@ -23,6 +23,10 @@ router.post("/", isAuth(), async (req, res) => {
   const userId = req.user._id;
 
   try {
+    if (!content || !chatId) {
+      throw new Error("Invalid data passed into request");
+    }
+
     const result = await sendMessage(content, chatId, userId);
     res.json(result);
   } catch (err) {

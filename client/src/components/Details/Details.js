@@ -5,6 +5,7 @@ import * as CatalogServices from "../../services/catalogServices";
 import React from "react";
 import "./Details.css";
 import ImageSlider from "../ImageSlider/ImageSlider";
+import ChatPopup from "../ChatPopUp/ChatPopUp";
 
 const Details = () => {
   const [cake, setCake] = useState({});
@@ -81,6 +82,7 @@ const Details = () => {
             )}
           </div>
         </div>
+        <ChatPopup/>
       </div>
       {/* //   )} */}
     </section>

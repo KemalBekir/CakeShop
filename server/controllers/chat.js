@@ -9,7 +9,7 @@ const router = require("express").Router();
 router.post("/", isAuth(), async (req, res) => {
   try {
     const userId = req.user._id;
-    const ownerId = req.body.ownerId;
+    const  ownerId  = req.body.ownerId;
     const result = await accessChat(userId, ownerId);
     res.status(200).json(result);
   } catch (err) {
