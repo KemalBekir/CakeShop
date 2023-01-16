@@ -82,7 +82,8 @@ const Details = () => {
             )}
           </div>
         </div>
-        <ChatPopup/>
+        {user && <ChatPopup/>}
+        
       </div>
       {/* //   )} */}
     </section>
