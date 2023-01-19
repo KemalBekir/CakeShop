@@ -10,6 +10,7 @@
   box-shadow: 0px 8px 14px 5px rgb(0 0 0 / 15%);
   border-radius: 50%;
   width: 60px;
+  cursor: pointer;
 }
 
 .chat-window {
@@ -43,6 +44,14 @@
   color: #31c48d;
   padding-right: 18px;
   font-size: 20px;
+}
+
+.chat-window-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 85%;
+    width: 100%;
 }
 
 .chat-input {

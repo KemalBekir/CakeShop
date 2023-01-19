@@ -1,0 +1,14 @@
+.feed-content-container {
+  width: 100%;
+  height: 95%;
+}
+
+.feed-content-text {
+  background-color: #bee3f8;
+  margin-top: 3px;
+  border-radius: 20px;
+  padding: 5px 15px;
+  max-width: 75%;
+  margin-left: 3px;
+  margin-right: 3px;
+}

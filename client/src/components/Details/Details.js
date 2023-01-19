@@ -60,7 +60,7 @@ const Details = () => {
             <li className="details-info-cake">
               <p>
                 <span className="details-info-accent">Type: </span>
-                {cake.type}
+                {cake.type?.substring(0, 1).toUpperCase() + cake.type?.substring(1)}
               </p>
             </li>
           </ul>

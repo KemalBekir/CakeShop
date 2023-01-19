@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import "./Search.css";
 import * as catalogService from "../../services/catalogServices";
 import CatalogCard from "../CatalogCard/CatalogCard";
+import Footer from "../Footer/Footer";
 
 const Search = () => {
   const [cakes, setCakes] = useState([]);
@@ -38,37 +39,49 @@ const Search = () => {
     }
   };
   return (
-    <section className="search-section">
-      <div className="search-container">
-        <form
-          className="search-search-container"
-          method="get"
-          onSubmit={submitSearch}
-        >
-          <input
-            className="search-search"
-            type="text"
-            placeholder="Search by Name or Type"
-            name="text"
-            value={searchTerm}
-            onChange={handleSearchTerm}
-          ></input>
-          <button className="search-search-btn">Search</button>
-        </form>
-        {isSearching ? (
-          <div className="search-result-container">
-            <h2 className="search-title">Search Results</h2>
-            {cakes.length > 0 ? (
-              cakes.map((x) => <CatalogCard key={x._id} cake={x} />)
-            ) : (
-              <h3 style={{ color: "black", textAlign: 'center', width: '100%', fontSize: '2rem' }}>No results</h3>
-            )}
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-    </section>
+    <>
+      <section className="search-section">
+        <div className="search-container">
+          <form
+            className="search-search-container"
+            method="get"
+            onSubmit={submitSearch}
+          >
+            <input
+              className="search-search"
+              type="text"
+              placeholder="Search by Name or Type"
+              name="text"
+              value={searchTerm}
+              onChange={handleSearchTerm}
+            ></input>
+            <button className="search-search-btn">Search</button>
+          </form>
+          {isSearching ? (
+            <div className="search-result-container">
+              <h2 className="search-title">Search Results</h2>
+              {cakes.length > 0 ? (
+                cakes.map((x) => <CatalogCard key={x._id} cake={x} />)
+              ) : (
+                <h3
+                  style={{
+                    color: "black",
+                    textAlign: "center",
+                    width: "100%",
+                    fontSize: "2rem",
+                  }}
+                >
+                  No results
+                </h3>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      </section>
+      <Footer />
+    </>
   );
 };
 

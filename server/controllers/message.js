@@ -6,7 +6,6 @@ const router = require("express").Router();
 
 router.get("/:chatId", isAuth(), async (req, res) => {
   const chatId = req.params.chatId;
-    console.log(req.params);
   try {
     const result = await getAllMessages(chatId);
     res.json(result);
@@ -17,9 +16,9 @@ router.get("/:chatId", isAuth(), async (req, res) => {
   }
 });
 
-router.post("/", isAuth(), async (req, res) => {
+router.post("/:chatId", isAuth(), async (req, res) => {
   const content = req.body.content;
-  const chatId = req.body.chatId;
+  const chatId = req.params.chatId;
   const userId = req.user._id;
 
   try {

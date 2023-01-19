@@ -1,28 +1,62 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentDots, faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./ChatPopUp.css";
-import { Field, Formik } from "formik";
+import * as ChatService from "../../services/chatService";
+import * as MsgService from "../../services/messageService";
+import { AuthContext } from "../../contexts/authContext";
+import ChatFeed from "../ChatFeed/ChatFeed";
 
 const ChatPopup = () => {
+  const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [chat, setChat] = useState();
+
+  const fetchChat = async () => {
+    setIsOpen(!isOpen);
+    if (isOpen !== true) {
+      ChatService.getChats(user.accessToken).then((result) => {
+        setChat(result);
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchMessages();
+  }, [chat]);
+
+  const fetchMessages = async () => {
+    if (!chat) return;
+
+    MsgService.getAllMessages(chat[0]._id, user.accessToken).then((result) => {
+      setMessages(result);
+    });
+  };
 
   const sendMessage = async (event) => {
     if (event.key === "Enter" && newMessage) {
-      event.preventDefault();
       //add socket.emit and message service
-      setNewMessage('');
+      event.preventDefault();
+     MsgService.sendMsg(
+        newMessage,
+        chat[0]._id,
+        user.accessToken
+      ).then((result) => {
+        setMessages([...messages, result]);
+      });
+        setNewMessage('');
     }
   };
 
   const typingHandler = (e) => {
     setNewMessage(e.target.value);
   };
+
   return (
     <div>
-      <button onClick={() => setIsOpen(!isOpen)} className="chat-container">
+      <button onClick={fetchChat} className="chat-container">
         <FontAwesomeIcon icon={faCommentDots} />
       </button>
       {isOpen ? (
@@ -32,6 +66,13 @@ const ChatPopup = () => {
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </div>
+
+          {messages && (
+            <div className="chat-window-content">
+              <ChatFeed messages={messages} />
+            </div>
+          )}
+
           {/* Your chat content goes here */}
           <form onKeyDown={sendMessage}>
             <input
