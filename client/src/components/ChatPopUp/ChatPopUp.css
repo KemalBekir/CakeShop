@@ -54,6 +54,10 @@
     width: 100%;
 }
 
+.chat-window-content::-webkit-scrollbar {
+    width: 0px;
+  }
+
 .chat-input {
   position: absolute;
   bottom: 0;

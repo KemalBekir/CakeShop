@@ -1,6 +1,15 @@
 .feed-content-container {
   width: 100%;
   height: 95%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: end;
+}
+
+.feed-conent-container::-webkit-scrollbar {
+  width: 0px;
 }
 
 .feed-content-text {

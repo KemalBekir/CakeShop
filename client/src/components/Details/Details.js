@@ -13,6 +13,7 @@ const Details = () => {
   const { cakeId } = useParams();
   const [isOnwer, setIsOwner] = useState(false);
   const navigate = useNavigate();
+  const isLogged = user ? true : false;
   const deleteHandler = () => {
     const confirm = window.confirm(
       `Are you sure you want to delete this item ${cake.cakeName}`
@@ -82,7 +83,7 @@ const Details = () => {
             )}
           </div>
         </div>
-        {user && <ChatPopup/>}
+        {isLogged ? <ChatPopup/> : '' }
         
       </div>
       {/* //   )} */}

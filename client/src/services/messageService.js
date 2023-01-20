@@ -11,7 +11,6 @@ export async function getAllMessages(chatId, token) {
 }
 
 export async function sendMsg(content, chatId, token) {
-  console.log(JSON.stringify(content));
   return fetch(`${msgUrl}/${chatId}`, {
     method: "POST",
     headers: {
