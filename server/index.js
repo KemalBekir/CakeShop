@@ -90,6 +90,10 @@ const io = require("socket.io")(server, {
         socket.leave(userData._id);
     })
 
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+      });
+
   });
 
 }

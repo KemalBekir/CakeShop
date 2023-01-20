@@ -13,22 +13,21 @@ let socket, selectedChatCompare;
 
 const ChatPopup = () => {
   const { user } = useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isClose, setIsClose] = useState(true);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [chat, setChat] = useState();
   const [socketConnected, setSocketConnected] = useState(false);
   const [latestMessage, setLatestMessage] = useState();
 
-
   const fetchChat = async () => {
-    setIsOpen(!isOpen);
-    if (isOpen !== true) {
+    if (isClose !== false) {
       ChatService.getChats(user.accessToken).then((result) => {
         setLatestMessage(result[0].latestMessage.content);
         setChat(result);
       });
     }
+
   };
 
   useEffect(() => {
@@ -37,28 +36,31 @@ const ChatPopup = () => {
     socket.on("connection", () => {
       setSocketConnected(true);
     });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
-
   useEffect(() => {
+    fetchChat();
     fetchMessages();
     selectedChatCompare = chat;
-  },[latestMessage]);
-
-  
+  }, [latestMessage, ]);
 
   useEffect(() => {
-    socket.on('message received', (newMsgReceived) => {
-      if(!selectedChatCompare || selectedChatCompare._id !== newMsgReceived.chat._id){
+    socket.on("message received", (newMsgReceived) => {
+      if (
+        !selectedChatCompare ||
+        selectedChatCompare._id !== newMsgReceived.chat._id
+      ) {
         //TODO - notification
         setLatestMessage(newMsgReceived.content);
       } else {
-        setMessages(prevMessages => [...prevMessages, newMsgReceived]);
+        setMessages((prevMessages) => [...prevMessages, newMsgReceived]);
       }
     });
-  })
-
-
+  });
 
   const fetchMessages = async () => {
     if (!chat) return;
@@ -66,18 +68,16 @@ const ChatPopup = () => {
     MsgService.getAllMessages(chat[0]._id, user.accessToken).then((result) => {
       setMessages(result);
       socket.emit("join chat", result[0]._id);
-
     });
   };
 
   const sendMessage = async (event) => {
     if (event.key === "Enter" && newMessage) {
-      //add socket.emit and message service
       event.preventDefault();
       setNewMessage("");
       MsgService.sendMsg(newMessage, chat[0]._id, user.accessToken).then(
         (result) => {
-          socket.emit('new message', result);
+          socket.emit("new message", result);
           setMessages([...messages, result]);
         }
       );
@@ -88,20 +88,25 @@ const ChatPopup = () => {
     setNewMessage(e.target.value);
 
     if (!socketConnected) return;
-
-
-
   };
 
   return (
     <div>
-      <button onClick={fetchChat} className="chat-container">
+      <button onClick={() => {
+        setIsClose(!isClose);
+        }} className="chat-container">
         <FontAwesomeIcon icon={faCommentDots} />
       </button>
-      {isOpen ? (
+      {isClose === false ? (
         <div className="chat-window">
           <div className="chat-window-top">
-            <button className="chat-btn" onClick={() => setIsOpen(false)}>
+            <button
+              className="chat-btn"
+              onClick={() => {
+                setIsClose(true);
+                socket.disconnect();
+              }}
+            >
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </div>
@@ -112,13 +117,13 @@ const ChatPopup = () => {
             </div>
           )}
 
-          {/* Your chat content goes here */}
-          <form onKeyDown={sendMessage}>
+          <form className="chat-window-input">
             <input
               className="chat-input"
-              placeholder="Enter a message..."
-              onChange={typingHandler}
+              placeholder="Type a message"
               value={newMessage}
+              onChange={typingHandler}
+              onKeyDown={sendMessage}
             />
           </form>
         </div>

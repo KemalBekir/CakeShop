@@ -83,7 +83,7 @@ const Details = () => {
             )}
           </div>
         </div>
-        {isLogged ? <ChatPopup/> : '' }
+        {isLogged  ? <ChatPopup/> : '' }
         
       </div>
       {/* //   )} */}
