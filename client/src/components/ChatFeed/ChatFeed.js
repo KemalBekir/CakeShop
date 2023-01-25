@@ -22,9 +22,7 @@ const ChatFeed = ({ messages }) => {
             m.sender._id === user._id ? "from-user" : "from-other"
           }`}
           key={i}
-          style={{
-            position: "relative",
-          }}
+         
           onMouseEnter={() => {
             setSelectedMessage(m);
           }}

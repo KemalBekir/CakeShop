@@ -24,26 +24,29 @@
   padding: 5px 15px;
   max-width: 75%;
   grid-column: 1 / 2;
+  position: relative;
 }
 
 .feed-content-text.from-user {
   background-color: #bee3f8;
-  margin-top: 3px;
+  margin-top: 2px;
   border-radius: 20px;
   padding: 5px 15px;
-  max-width: 75%;
+  max-width: 65%;
   margin-left: auto;
   margin-right: 3px;
+  text-align: start;
 }
 
 .feed-content-text.from-other {
   background-color: #b9f5d0;
-  margin-top: 3px;
+  margin-top: 2px;
   border-radius: 20px;
   padding: 5px 15px;
-  max-width: 75%;
+  max-width: 65%;
   margin-left: 3px;
   margin-right: auto;
+  text-align: end;
 }
 
 .time-stamp {
@@ -57,9 +60,9 @@
 }
 
 .left {
-  left: 172px;
+  left: 120%;
 }
 
 .right {
-  right: 140px;
+  right: 120%;
 }

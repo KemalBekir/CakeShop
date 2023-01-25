@@ -1,0 +1,14 @@
+.chat-list {
+  display: flex;
+  justify-content: center;
+}
+
+.chat-user-title {
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  background: #e8e8e8;
+  border-radius: 1rem;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+}
