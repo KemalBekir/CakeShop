@@ -7,18 +7,20 @@ import * as MsgService from "../../services/messageService";
 import { AuthContext } from "../../contexts/authContext";
 import ChatFeed from "../ChatFeed/ChatFeed";
 import io from "socket.io-client";
+import { ChatContext } from "../../contexts/chatContext";
 
 const ENDPOINT = "http://localhost:5000"; //TODO - change when deploying
 let socket, selectedChatCompare;
 
 const ChatPopup = () => {
   const { user } = useContext(AuthContext);
-  const [isClose, setIsClose] = useState(true);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [chat, setChat] = useState();
   const [socketConnected, setSocketConnected] = useState(false);
   const [latestMessage, setLatestMessage] = useState();
+
+  const { isClose,setIsClose} = useContext(ChatContext);
 
   const fetchChat = async () => {
     if (isClose !== false) {

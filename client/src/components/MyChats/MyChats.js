@@ -3,10 +3,10 @@ import * as ChatService from "../../services/chatService";
 import { AuthContext } from "../../contexts/authContext";
 import "./MyChats.css";
 import { getSender } from "../../utils/utils";
+import { ChatContext } from "../../contexts/chatContext";
 
 const MyChats = () => {
   const { user } = useContext(AuthContext);
-  const [selectedChat, setSelectedChat] = useState();
   const [chats, setChats] = useState();
   const [notification, setNotification] = useState([]);
   const [latestMessage, setLatestMessage] = useState();
@@ -17,6 +17,8 @@ const MyChats = () => {
       setChats(result);
     });
   };
+
+  const { selectedChat, setSelectedChat } = useContext(ChatContext);
 
   useEffect(() => {
     fetchChat();
@@ -35,7 +37,7 @@ const MyChats = () => {
               >
                 <p className="chat-user-title">{getSender(user, chat.users)}</p>
               </div>
-            )
+            );
           })}
         </>
       ) : (
