@@ -7,22 +7,21 @@ import { ChatContext } from "../../contexts/chatContext";
 
 const MyChats = () => {
   const { user } = useContext(AuthContext);
-  const [chats, setChats] = useState();
   const [notification, setNotification] = useState([]);
-  const [latestMessage, setLatestMessage] = useState();
 
   const fetchChat = async () => {
     ChatService.getChats(user.accessToken).then((result) => {
+    
       setLatestMessage(result[0].latestMessage.content);
       setChats(result);
     });
   };
 
-  const { selectedChat, setSelectedChat } = useContext(ChatContext);
+  const { selectedChat, setSelectedChat,chats, setChats ,latestMessage,setLatestMessage} = useContext(ChatContext);
 
   useEffect(() => {
     fetchChat();
-  }, [latestMessage]);
+  }, [latestMessage, selectedChat]);
 
   return (
     <div>

@@ -8,7 +8,7 @@ import CatalogCard from "../CatalogCard/CatalogCard";
 import Footer from "../Footer/Footer";
 import MyChats from "../MyChats/MyChats";
 import { ChatContext } from "../../contexts/chatContext";
-import ChatPopup from "../ChatPopUp/ChatPopUp";
+import ChatWindow from "../ChatWindow/ChatWindow";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -39,8 +39,7 @@ const Profile = () => {
         </div>
         <div className="profile-section-container">
           {selectedChat ? (
-            
-            <ChatPopup/>
+            <ChatWindow/>
           ) : (
             <>
               <div className="profile-title-container">

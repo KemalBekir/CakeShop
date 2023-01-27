@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentDots, faXmark } from "@fortawesome/free-solid-svg-icons";
-import "./ChatPopUp.css";
+import "./ChatWindow.css";
 import * as ChatService from "../../services/chatService";
 import * as MsgService from "../../services/messageService";
 import { AuthContext } from "../../contexts/authContext";
@@ -12,24 +12,15 @@ import { ChatContext } from "../../contexts/chatContext";
 const ENDPOINT = "http://localhost:5000"; //TODO - change when deploying
 let socket, selectedChatCompare;
 
-const ChatPopup = () => {
+const ChatWindow = () => {
   const { user } = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [chat, setChat] = useState();
   const [socketConnected, setSocketConnected] = useState(false);
+  const [latestMessage, setLatestMessage] = useState();
 
-  const { isClose, setIsClose, latestMessage, setLatestMessage } =
+  const { selectedChat, setSelectedChat, chats, setChats } =
     useContext(ChatContext);
-
-  const fetchChat = async () => {
-    if (isClose !== false) {
-      ChatService.getChats(user.accessToken).then((result) => {
-        setLatestMessage(result[0].latestMessage.content);
-        setChat(result);
-      });
-    }
-  };
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -44,9 +35,8 @@ const ChatPopup = () => {
   }, []);
 
   useEffect(() => {
-    fetchChat();
     fetchMessages();
-    selectedChatCompare = chat;
+    selectedChatCompare = selectedChat;
   }, [latestMessage]);
 
   useEffect(() => {
@@ -61,22 +51,24 @@ const ChatPopup = () => {
         setMessages((prevMessages) => [...prevMessages, newMsgReceived]);
       }
     });
-  });
+  },[latestMessage]);
 
   const fetchMessages = async () => {
-    if (!chat) return;
+    if (!selectedChat) return;
 
-    MsgService.getAllMessages(chat[0]._id, user.accessToken).then((result) => {
-      setMessages(result);
-      socket.emit("join chat", result[0]._id);
-    });
+    MsgService.getAllMessages(selectedChat._id, user.accessToken).then(
+      (result) => {
+        setMessages(result);
+        socket.emit("join chat", selectedChat._id);
+      }
+    );
   };
 
   const sendMessage = async (event) => {
     if (event.key === "Enter" && newMessage) {
       event.preventDefault();
       setNewMessage("");
-      MsgService.sendMsg(newMessage, chat[0]._id, user.accessToken).then(
+      MsgService.sendMsg(newMessage, selectedChat._id, user.accessToken).then(
         (result) => {
           socket.emit("new message", result);
           setMessages([...messages, result]);
@@ -90,50 +82,26 @@ const ChatPopup = () => {
 
     if (!socketConnected) return;
   };
-
   return (
-    <div>
-      <button
-        onClick={() => {
-          setIsClose(!isClose);
-        }}
-        className="chat-container"
-      >
-        <FontAwesomeIcon icon={faCommentDots} />
-      </button>
-      {isClose === false ? (
-        <div className="chat-window">
-          <div className="chat-window-top">
-            <button
-              className="chat-btn"
-              onClick={() => {
-                setIsClose(true);
-                socket.disconnect();
-              }}
-            >
-              <FontAwesomeIcon icon={faXmark} />
-            </button>
+    <section className="chat-window-section">
+      <div className="chat-window-container">
+        {messages && (
+          <div className="chat-window-content-mychat">
+            <ChatFeed messages={messages} />
           </div>
-
-          {messages && (
-            <div className="chat-window-content">
-              <ChatFeed messages={messages} />
-            </div>
-          )}
-
-          <form className="chat-window-input">
-            <input
-              className="chat-input"
-              placeholder="Type a message"
-              value={newMessage}
-              onChange={typingHandler}
-              onKeyDown={sendMessage}
-            />
-          </form>
-        </div>
-      ) : null}
-    </div>
+        )}
+        <form className="chat-window-form">
+          <input
+            className="chat-form-input"
+            placeholder="Type a message"
+            value={newMessage}
+            onChange={typingHandler}
+            onKeyDown={sendMessage}
+          />
+        </form>
+      </div>
+    </section>
   );
 };
 
-export default ChatPopup;
+export default ChatWindow;

@@ -8,6 +8,7 @@ export const ChatProvider = ({ children }) => {
   const [notification, setNotification] = useState([]);
   const [chats, setChats] = useState();
   const [isClose, setIsClose] = useState(true);
+  const [latestMessage, setLatestMessage] = useState();
 
   return (
     <ChatContext.Provider
@@ -20,6 +21,8 @@ export const ChatProvider = ({ children }) => {
         setChats,
         isClose,
         setIsClose,
+        latestMessage,
+        setLatestMessage
       }}
     >
       {children}
