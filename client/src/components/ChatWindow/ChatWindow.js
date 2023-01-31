@@ -12,15 +12,20 @@ import { ChatContext } from "../../contexts/chatContext";
 const ENDPOINT = "http://localhost:5000"; //TODO - change when deploying
 let socket, selectedChatCompare;
 
-const ChatWindow = () => {
+const ChatWindow = ({ isClose, setIsClose }) => {
   const { user } = useContext(AuthContext);
-  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [socketConnected, setSocketConnected] = useState(false);
   const [latestMessage, setLatestMessage] = useState();
 
-  const { selectedChat, setSelectedChat, chats, setChats } =
-    useContext(ChatContext);
+  const {
+    selectedChat,
+    setSelectedChat,
+    chats,
+    setChats,
+    messages,
+    setMessages,
+  } = useContext(ChatContext);
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -32,10 +37,12 @@ const ChatWindow = () => {
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [isClose]);
 
   useEffect(() => {
     fetchMessages();
+    setIsClose(false);
+
     selectedChatCompare = selectedChat;
   }, [latestMessage]);
 
@@ -51,7 +58,7 @@ const ChatWindow = () => {
         setMessages((prevMessages) => [...prevMessages, newMsgReceived]);
       }
     });
-  },[latestMessage]);
+  }, [latestMessage]);
 
   const fetchMessages = async () => {
     if (!selectedChat) return;
@@ -85,6 +92,17 @@ const ChatWindow = () => {
   return (
     <section className="chat-window-section">
       <div className="chat-window-container">
+        <div className="chat-window-top">
+          <button
+            className="chat-btn"
+            onClick={() => {
+              setIsClose(true);
+              socket.disconnect();
+            }}
+          >
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </div>
         {messages && (
           <div className="chat-window-content-mychat">
             <ChatFeed messages={messages} />
