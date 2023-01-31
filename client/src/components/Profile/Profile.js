@@ -15,12 +15,12 @@ const Profile = () => {
   const [profile, setProfile] = useState("");
   const [cakes, setCakes] = useState([]);
   const { selectedChat, setSelectedChat } = useContext(ChatContext);
+  const [isClose, setIsClose] = useState(true);
 
   useEffect(() => {
     UserService.getProfile(user.accessToken).then((result) => {
       setProfile(result);
     });
-
     CatalogService.myCakes(user.accessToken).then((result) => {
       setCakes(result);
     });
@@ -39,8 +39,12 @@ const Profile = () => {
         </div>
         <div className="profile-section-container">
           {selectedChat ? (
-            <ChatWindow/>
-          ) : (
+            <ChatWindow
+              isClose={isClose}
+              setIsClose={setIsClose}
+              onClick={() => setIsClose(false)}
+            />
+          ) : isClose == true ? (
             <>
               <div className="profile-title-container">
                 <h2 className="profile-title">
@@ -56,7 +60,7 @@ const Profile = () => {
                 </div>
               </div>
             </>
-          )}
+          ) : null}
         </div>
       </section>
       <Footer />

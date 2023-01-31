@@ -29,7 +29,7 @@ const Details = () => {
 
   useEffect(() => {
     CatalogServices.getCakeById(cakeId).then((result) => {
-      if(user._id === result.owner._id){
+      if (user._id === result.owner._id) {
         setIsOwner(true);
       }
       setCake(result);
@@ -42,7 +42,7 @@ const Details = () => {
       {/* ) : ( */}
       <div className="details-container">
         <div className="details-img-container">
-          <ImageSlider cakes={cake} parentWidth={610}/>
+          <ImageSlider cakes={cake} parentWidth={610} />
           {/* <img className="details-img" src={cake.imgOne} alt={cake.desc}></img> */}
         </div>
         <div className="details-info-container">
@@ -61,7 +61,8 @@ const Details = () => {
             <li className="details-info-cake">
               <p>
                 <span className="details-info-accent">Type: </span>
-                {cake.type?.substring(0, 1).toUpperCase() + cake.type?.substring(1)}
+                {cake.type?.substring(0, 1).toUpperCase() +
+                  cake.type?.substring(1)}
               </p>
             </li>
           </ul>
@@ -83,8 +84,7 @@ const Details = () => {
             )}
           </div>
         </div>
-        {isLogged  ? <ChatPopup/> : '' }
-        
+        {isLogged ? <ChatPopup cake={cake} /> : ""}
       </div>
       {/* //   )} */}
     </section>

@@ -12,26 +12,29 @@
 }
 
 .chat-window-content-mychat {
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    height: 95%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 95%;
+  width: 100%;
+}
+.chat-window-content-mychat::-webkit-scrollbar {
+  width: 0;
 }
 
+
 .chat-window-container {
-    height: 90vh;
+  height: 100%;
 }
 
 .chat-form-input {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    border: none;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    padding-left: 1rem;
-    padding-bottom: 8px;
-    height: 3rem;
-  }
-  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 8px;
+  height: 3rem;
+}

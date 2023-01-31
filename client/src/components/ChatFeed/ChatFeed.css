@@ -4,7 +4,7 @@
   grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
   grid-gap: 10px;
   width: 100%;
-  height: 95%;
+  height: 92%;
   overflow-y: auto;
   align-items: baseline;
   justify-content: end;
@@ -29,22 +29,22 @@
 
 .feed-content-text.from-user {
   background-color: #bee3f8;
-  margin-top: 2px;
+  margin-top: 6px;
   border-radius: 20px;
   padding: 5px 15px;
   max-width: 65%;
   margin-left: auto;
-  margin-right: 3px;
+  margin-right: 6px;
   text-align: start;
 }
 
 .feed-content-text.from-other {
   background-color: #b9f5d0;
-  margin-top: 2px;
+  margin-top: 6px;
   border-radius: 20px;
   padding: 5px 15px;
   max-width: 65%;
-  margin-left: 3px;
+  margin-left: 6px;
   margin-right: auto;
   text-align: end;
 }

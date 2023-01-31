@@ -5,6 +5,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const { user } = useAuthContext();
+  const isAdmin = user.email == "peter@abv.bg";
 
   return (
     <nav className="nav">
@@ -18,12 +19,6 @@ const Navbar = () => {
                 alt="company logo"
               />
             </Link>
-            {/* <Link
-          style={{ textDecoration: "none", color: "white", width: "35%" }}
-          to="/"
-          >
-          Cake Shop
-        </Link> */}
           </span>
         </div>
         <div className="nav-list-container">
@@ -40,7 +35,8 @@ const Navbar = () => {
               >
                 Catalogue
               </Link>
-            </li>     <li>
+            </li>{" "}
+            <li>
               <Link
                 style={{ textDecoration: "none", color: "white" }}
                 to="/catalogue/search"
@@ -48,14 +44,6 @@ const Navbar = () => {
                 Search
               </Link>
             </li>
-            {/* <li>
-              <Link
-                style={{ textDecoration: "none", color: "white" }}
-                to="/catalogue/deals"
-              >
-                Deals
-              </Link>
-            </li> */}
             {user.email ? (
               <div className="user">
                 <li>
@@ -66,14 +54,16 @@ const Navbar = () => {
                     Profile
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/create"
-                  >
-                    Create
-                  </Link>
-                </li>
+                {isAdmin && (
+                  <li>
+                    <Link
+                      style={{ textDecoration: "none", color: "white" }}
+                      to="/create"
+                    >
+                      Create
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link
                     style={{ textDecoration: "none", color: "white" }}

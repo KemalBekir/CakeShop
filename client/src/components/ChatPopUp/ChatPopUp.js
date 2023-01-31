@@ -12,21 +12,30 @@ import { ChatContext } from "../../contexts/chatContext";
 const ENDPOINT = "http://localhost:5000"; //TODO - change when deploying
 let socket, selectedChatCompare;
 
-const ChatPopup = () => {
+const ChatPopup = ({ cake }) => {
   const { user } = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [isClose, setIsClose] = useState(true);
+
   const [chat, setChat] = useState();
   const [socketConnected, setSocketConnected] = useState(false);
 
-  const { isClose, setIsClose, latestMessage, setLatestMessage } =
-    useContext(ChatContext);
+  const { latestMessage, setLatestMessage } = useContext(ChatContext);
 
   const fetchChat = async () => {
     if (isClose !== false) {
       ChatService.getChats(user.accessToken).then((result) => {
-        setLatestMessage(result[0].latestMessage.content);
-        setChat(result);
+        if (result.length > 0) {
+          setLatestMessage(result[0].latestMessage?.content);
+          setChat(result);
+        } else {
+          ChatService.accessChat(user.accessToken, cake.owner._id).then(
+            (result) => {
+              setChat(result);
+            }
+          );
+        }
       });
     }
   };
@@ -46,8 +55,9 @@ const ChatPopup = () => {
   useEffect(() => {
     fetchChat();
     fetchMessages();
+
     selectedChatCompare = chat;
-  }, [latestMessage]);
+  }, [latestMessage, isClose]);
 
   useEffect(() => {
     socket.on("message received", (newMsgReceived) => {
@@ -55,7 +65,6 @@ const ChatPopup = () => {
         !selectedChatCompare ||
         selectedChatCompare._id !== newMsgReceived.chat._id
       ) {
-        //TODO - notification
         setLatestMessage(newMsgReceived.content);
       } else {
         setMessages((prevMessages) => [...prevMessages, newMsgReceived]);
@@ -75,6 +84,7 @@ const ChatPopup = () => {
   const sendMessage = async (event) => {
     if (event.key === "Enter" && newMessage) {
       event.preventDefault();
+
       setNewMessage("");
       MsgService.sendMsg(newMessage, chat[0]._id, user.accessToken).then(
         (result) => {

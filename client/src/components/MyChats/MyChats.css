@@ -6,13 +6,19 @@
 .chat-user-title {
   font-size: 1.5rem;
   padding: 10px 15px;
-  background: #e8e8e8;
   border-radius: 1rem;
   width: 50%;
   text-align: center;
   cursor: pointer;
 }
 
-.chat-user-title:nth-child(1){
-    margin-top: 1rem;
+.bg {
+  background: #e8e8e8;
+}
+.selected-bg {
+  background: #b9f5d0;
+}
+
+.chat-user-title:nth-child(1) {
+  margin-top: 1rem;
 }

@@ -7,8 +7,8 @@ export const ChatProvider = ({ children }) => {
   const [selectedChat, setSelectedChat] = useState();
   const [notification, setNotification] = useState([]);
   const [chats, setChats] = useState();
-  const [isClose, setIsClose] = useState(true);
   const [latestMessage, setLatestMessage] = useState();
+  const [messages, setMessages] = useState([]);
 
   return (
     <ChatContext.Provider
@@ -19,10 +19,11 @@ export const ChatProvider = ({ children }) => {
         setNotification,
         chats,
         setChats,
-        isClose,
-        setIsClose,
+        
         latestMessage,
-        setLatestMessage
+        setLatestMessage,
+        messages,
+        setMessages,
       }}
     >
       {children}
