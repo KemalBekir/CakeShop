@@ -97,6 +97,7 @@ const ChatWindow = ({ isClose, setIsClose }) => {
             className="chat-btn"
             onClick={() => {
               setIsClose(true);
+              setSelectedChat('');
               socket.disconnect();
             }}
           >
