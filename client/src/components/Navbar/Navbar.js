@@ -1,12 +1,18 @@
-import React from "react";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/authContext";
 import "./Navbar.css";
 
 const Navbar = () => {
   const { user } = useAuthContext();
+  const [active, setActive] = useState(false);
   const isAdmin = user.email == "peter@abv.bg";
 
+  const handleClick = () => {
+    setActive(!active);
+  };
   return (
     <nav className="nav">
       <div className="nav-container">
@@ -21,8 +27,8 @@ const Navbar = () => {
             </Link>
           </span>
         </div>
-        <div className="nav-list-container">
-          <ul>
+        <div className={`nav-list-container `}>
+          <ul className={`${active ? "active" : "deactive"}`}>
             <li>
               <Link style={{ textDecoration: "none", color: "white" }} to="/">
                 Home
@@ -94,6 +100,15 @@ const Navbar = () => {
               </div>
             )}
           </ul>
+        </div>
+        <div className="burger-menu" onClick={handleClick}>
+          {active ? (
+            <FontAwesomeIcon icon={faXmark} />
+            
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
+
+          )}
         </div>
       </div>
     </nav>
