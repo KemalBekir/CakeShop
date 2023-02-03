@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { Formik, Form, Field } from "formik";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 import * as catalogServices from "../../services/catalogServices";
 import "./Edit.css";
@@ -55,10 +56,9 @@ const Edit = () => {
       .editCake(cakeId, cakeData, user.accessToken)
       .then((result) => {
         if (result.message) {
-          //TODO: Notification success
-          console.log(result.message);
+          toast.error(result.message);
         } else {
-          //TODO: Notification error
+          toast.success(`${cakeData.cakeName} successfully edited`);
           navigate(`/catalogue/details/${cakeId}`);
         }
       });

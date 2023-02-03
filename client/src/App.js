@@ -19,6 +19,8 @@ import OwnerRoute from "./components/Common/OwnerRoute";
 import Search from "./components/Search/Search";
 import Footer from "./components/Footer/Footer";
 import { ChatProvider } from "./contexts/chatContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -29,6 +31,18 @@ function App() {
             <Navbar />
 
             <main id="site-content">
+              <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               <CakesProvider>
                 <Routes>
                   <Route path="/" element={<Home />} />

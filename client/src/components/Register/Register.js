@@ -5,6 +5,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import * as userService from "../../services/userService";
 import React from "react";
+import { toast } from "react-toastify";
 import "./Register.css";
 
 const RegisterSchema = Yup.object().shape({
@@ -43,11 +44,11 @@ const Register = () => {
     const { username, email, password, rePass } = values;
     userService.registerUser({ username, email, password }).then((authData) => {
       if (authData.message) {
-        //TODO: Error notification
+        toast.error(authData.message);
       } else {
-        //TODO: Success notification
+        toast.success(`Welcome ${username}`);
         userLogin(authData);
-        navigate('/');
+        navigate("/");
       }
     });
   };

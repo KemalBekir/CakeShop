@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/userService";
 import { AuthContext } from "../../contexts/authContext";
+import { toast } from "react-toastify";
 import "./Login.css";
 
 const Login = () => {
@@ -23,9 +24,10 @@ const Login = () => {
         throw new Error(authData.message);
       }
       userLogin(authData);
+      toast.success(`Welcome ${email}`);
       navigate("/");
     } catch (error) {
-      console.error(error.message);
+      toast.error(error.message);
     }
   };
 

@@ -2,29 +2,29 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import * as CatalogServices from "../../services/catalogServices";
+import { toast } from "react-toastify";
 import React from "react";
 import "./Details.css";
 import ImageSlider from "../ImageSlider/ImageSlider";
 import ChatPopup from "../ChatPopUp/ChatPopUp";
+import Modal from "../Modal/Modal";
 
 const Details = () => {
   const [cake, setCake] = useState({});
   const { user } = useContext(AuthContext);
   const { cakeId } = useParams();
-  const [isOnwer, setIsOwner] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
   const isLogged = user ? true : false;
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
   const deleteHandler = () => {
-    const confirm = window.confirm(
-      `Are you sure you want to delete this item ${cake.cakeName}`
-    );
-    if (confirm) {
-      CatalogServices.deleteCake(cakeId, user.accessToken);
-      navigate("/catalogue");
-      //TODO: Notification for success
-    } else {
-      navigate(`/catalogue/details/${cakeId}`);
-    }
+    CatalogServices.deleteCake(cakeId, user.accessToken);
+    navigate("/catalogue");
+    toast.success(`${cake.cakeName} successfully deleted`);
   };
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Details = () => {
             </li>
           </ul>
           <div className="details-btn-wrapper">
-            {isOnwer ? (
+            {isOwner ? (
               <>
                 <Link
                   className="details-btn-edit"
@@ -75,9 +75,21 @@ const Details = () => {
                 >
                   Edit
                 </Link>
-                <button onClick={deleteHandler} className="details-btn-delete">
+                <button
+                  onClick={handleOpenModal}
+                  className="details-btn-delete"
+                >
                   Delete
                 </button>
+                {showModal && (
+                  <Modal>
+                    <p>Are you sure you want to delete this item?</p>
+                    <div className="modal-buttons">
+                      <button onClick={deleteHandler}>Yes</button>
+                      <button onClick={handleCloseModal}>Cancel</button>
+                    </div>
+                  </Modal>
+                )}
               </>
             ) : (
               ""

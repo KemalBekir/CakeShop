@@ -7,6 +7,7 @@ import * as catalogServices from "../../services/catalogServices";
 import React from "react";
 import "./Create.css";
 import Footer from "../Footer/Footer";
+import { toast } from "react-toastify";
 
 const CreateSchema = Yup.object().shape({
   cakeName: Yup.string()
@@ -46,9 +47,9 @@ const Create = () => {
     const cakeData = values;
     catalogServices.createCake(cakeData, user.accessToken).then((result) => {
       if (result.message) {
-        //TODO: Notification success
+        toast.error(result.message);
       } else {
-        //TODO: Notification error
+        toast.success(`${cakeData.cakeName} was created successfully`);
         navigate("/catalogue");
       }
     });
