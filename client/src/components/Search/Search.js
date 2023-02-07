@@ -71,7 +71,7 @@ const Search = () => {
                     fontSize: "2rem",
                   }}
                 >
-                  No results
+                  No results found
                 </h3>
               )}
             </div>

@@ -10,9 +10,9 @@ const Footer = () => {
       <div className="footer-list-container">
         <h5 className="footer-title">Cake's Shop</h5>
         <ul className="footer-list">
-          <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.instagram.com/peterscakes1/" target="_blank"><FontAwesomeIcon icon={faInstagramSquare}/></a></li>
-          <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.facebook.com/bakerpetes" target="_blank"><FontAwesomeIcon icon={faFacebookSquare}/></a></li>
-          <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.tiktok.com/@peterscake1" target="_blank"><FontAwesomeIcon icon={faTiktok}/></a></li>
+          <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.instagram.com/" target="_blank"><FontAwesomeIcon icon={faInstagramSquare}/></a></li>
+          <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.facebook.com/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare}/></a></li>
+          <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.tiktok.com/" target="_blank"><FontAwesomeIcon icon={faTiktok}/></a></li>
         </ul>
       </div>
     </section>
