@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import * as catalogServices from "../../services/catalogServices";
 import React from "react";
 import "./Create.css";
-import Footer from "../Footer/Footer";
 import { toast } from "react-toastify";
 
 const CreateSchema = Yup.object().shape({
@@ -183,7 +182,7 @@ const Create = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
