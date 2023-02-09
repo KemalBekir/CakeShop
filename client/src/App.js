@@ -76,6 +76,7 @@ function App() {
             </main>
           </ChatProvider>
         </AuthProvider>
+        <Footer />
       </div>
     </>
   );

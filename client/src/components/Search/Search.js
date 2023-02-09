@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import "./Search.css";
 import * as catalogService from "../../services/catalogServices";
 import CatalogCard from "../CatalogCard/CatalogCard";
-import Footer from "../Footer/Footer";
 
 const Search = () => {
   const [cakes, setCakes] = useState([]);
@@ -80,7 +79,7 @@ const Search = () => {
           )}
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

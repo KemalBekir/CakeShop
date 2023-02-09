@@ -116,4 +116,8 @@
   .catalog-left-side {
     top: 29%;
   }
+
+  .catalog-content{
+    justify-content: center;
+  }
 }

@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <section className="footer-container">
+    <footer className="footer-container">
       <div className="footer-list-container">
-        <h5 className="footer-title">Cake's Shop</h5>
+        <h5 className="footer-title">Cake Shop</h5>
         <ul className="footer-list">
           <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.instagram.com/" target="_blank"><FontAwesomeIcon icon={faInstagramSquare}/></a></li>
           <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.facebook.com/" target="_blank"><FontAwesomeIcon icon={faFacebookSquare}/></a></li>
           <li className="footer-list-item"><a className="footer-list-item-link" href="https://www.tiktok.com/" target="_blank"><FontAwesomeIcon icon={faTiktok}/></a></li>
         </ul>
       </div>
-    </section>
+    </footer>
   );
 };
 

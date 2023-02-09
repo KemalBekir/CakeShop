@@ -1,7 +1,7 @@
 .home-container {
   position: relative;
   width: 100%;
-  height: 900px;
+  height: 100%;
 }
 
 .home-section {
@@ -63,7 +63,18 @@
 
 @media only screen and (max-width: 820px) {
   .home-section-btn {
-    top: 56%;
+    top: 16%;
+    left: 13%;
+  }
+  .home-section-title {
+    left: unset;
+    top: 5%;
+  }
+
+  .home-section-paragraph {
+    width: 74%;
+    left: unset;
+    top: 10%;
   }
 }
 
@@ -78,7 +89,7 @@
   }
   .home-section-title {
     left: unset;
-    top: 15%;
+    top: 2%;
     margin: 0 1rem;
   }
 
@@ -87,7 +98,8 @@
     left: unset;
     width: 100%;
   }
-  .home-section-btn{
+  .home-section-btn {
     left: unset;
+    top: 18%;
   }
 }

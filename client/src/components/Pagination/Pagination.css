@@ -19,3 +19,15 @@
   border: none;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 380px) {
+  .pagination {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .pagination{
+    padding-left: 0;
+  }
+}

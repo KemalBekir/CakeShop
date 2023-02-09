@@ -6,7 +6,6 @@ import CatalogCard from "../CatalogCard/CatalogCard";
 import "./Catalog.css";
 import React from "react";
 import Pagination from "../Pagination/Pagination";
-import Footer from "../Footer/Footer";
 
 const Catalog = () => {
   const [cake, setCake] = useState([]);
@@ -104,7 +103,7 @@ const Catalog = () => {
         )} */}
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -35,6 +35,7 @@ const Details = () => {
       setCake(result);
     });
   }, [cakeId]);
+
   return (
     <section className="details-section">
       {/* {isLoading ? ( */}
@@ -42,7 +43,7 @@ const Details = () => {
       {/* ) : ( */}
       <div className="details-container">
         <div className="details-img-container">
-          <ImageSlider cakes={cake} parentWidth={610} />
+          <ImageSlider cakes={cake} parentWidth={610} className="slider" />
           {/* <img className="details-img" src={cake.imgOne} alt={cake.desc}></img> */}
         </div>
         <div className="details-info-container">

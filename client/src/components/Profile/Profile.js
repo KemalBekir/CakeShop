@@ -5,7 +5,6 @@ import * as CatalogService from "../../services/catalogServices";
 import "./Profile.css";
 import React from "react";
 import CatalogCard from "../CatalogCard/CatalogCard";
-import Footer from "../Footer/Footer";
 import MyChats from "../MyChats/MyChats";
 import { ChatContext } from "../../contexts/chatContext";
 import ChatWindow from "../ChatWindow/ChatWindow";
@@ -63,7 +62,6 @@ const Profile = () => {
           ) : null}
         </div>
       </section>
-      <Footer />
     </>
   );
 };
