@@ -53,7 +53,7 @@ const ChatWindow = ({ isClose, setIsClose }) => {
         selectedChatCompare._id !== newMsgReceived.chat._id
       ) {
         //TODO - notification
-        setLatestMessage(newMsgReceived.content);
+        // setLatestMessage(newMsgReceived.content);
       } else {
         setMessages((prevMessages) => [...prevMessages, newMsgReceived]);
       }
@@ -65,6 +65,7 @@ const ChatWindow = ({ isClose, setIsClose }) => {
 
     MsgService.getAllMessages(selectedChat._id, user.accessToken).then(
       (result) => {
+        setLatestMessage(result[result.length - 1].content);
         setMessages(result);
         socket.emit("join chat", selectedChat._id);
       }
@@ -97,7 +98,7 @@ const ChatWindow = ({ isClose, setIsClose }) => {
             className="chat-btn"
             onClick={() => {
               setIsClose(true);
-              setSelectedChat('');
+              setSelectedChat("");
               socket.disconnect();
             }}
           >

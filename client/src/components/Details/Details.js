@@ -68,7 +68,8 @@ const Details = () => {
             </li>
           </ul>
           <div className="details-btn-wrapper">
-            {isOwner ? (
+            {console.log(isOwner)}
+            {isOwner && (
               <>
                 <Link
                   className="details-btn-edit"
@@ -92,8 +93,6 @@ const Details = () => {
                   </Modal>
                 )}
               </>
-            ) : (
-              ""
             )}
           </div>
         </div>

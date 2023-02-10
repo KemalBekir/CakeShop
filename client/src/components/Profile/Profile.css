@@ -1,54 +1,73 @@
 .profile-section {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .profile-section-container {
-    width: 70%;
+  width: 70%;
 }
 
 .profile-title-container {
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    flex-direction: column;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  flex-direction: column;
 }
 
-
 .profile-title {
-    width: 100%;
-    text-align: center;
-    margin-top: 1.8rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 1.8rem;
 }
 
 .profile-list-container {
-    width: 90%;
-    margin: 1.5rem auto;
-    align-items: center;
+  width: 90%;
+  margin: 1.5rem auto;
+  align-items: center;
 }
 
 .profile-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .profile-chats-container {
-    width: 30%;
-    justify-content: center;
-    margin-top: 4.2rem;
+  width: 30%;
+  justify-content: center;
+  margin-top: 4.2rem;
 }
 
 .profile-chats-list {
-    width: 95%;
-    height: 50vh;
-    max-height: 100%;
-    border-radius: 1rem;
-    margin-top: 1.4rem;
-    margin-left: 2rem;
-    -webkit-box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.3);
+  width: 95%;
+  height: 50vh;
+  max-height: 100%;
+  border-radius: 1rem;
+  margin-top: 1.4rem;
+  margin-left: 2rem;
+  -webkit-box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 380px) {
+  .profile-section {
+    flex-direction: column;
+  }
+
+  .profile-chats-container {
+    width: 100%;
+  }
+
+  .profile-chats-list {
+    margin-top: unset;
+    margin-left: unset;
+    margin: 0 auto;
+  }
+
+  .profile-section-container{
+    width: 100%;
+  }
 }

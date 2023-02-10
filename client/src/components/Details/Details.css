@@ -45,7 +45,6 @@
   object-fit: cover;
   width: 100%;
   height: 610px;
-
 }
 .details-info-container {
   width: 40%;
@@ -113,20 +112,27 @@
   cursor: pointer;
 }
 
-
-
-@media only screen and (max-width: 820px){
-  .details-section{
+@media only screen and (max-width: 820px) {
+  .details-section {
     width: 95%;
     height: 100%;
   }
-  .details-container{
+  .details-container {
     height: 1000px;
+  }
+
+  .details-info-container {
+    position: relative;
+  }
+
+  .details-btn-wrapper {
+    position: absolute;
+    bottom: 1rem;
   }
 }
 
-@media only screen and (max-width: 380px){
-  .slider{
+@media only screen and (max-width: 380px) {
+  .slider {
     width: 370px;
   }
 
@@ -134,7 +140,12 @@
     width: 370px;
     height: 50%;
   }
-  .details-info-container{
+  .details-info-container {
     width: 80%;
+    position: relative;
+  }
+  .details-btn-wrapper {
+    position: absolute;
+    bottom: 500px;
   }
 }
