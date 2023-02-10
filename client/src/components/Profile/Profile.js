@@ -43,7 +43,7 @@ const Profile = () => {
               setIsClose={setIsClose}
               onClick={() => setIsClose(false)}
             />
-          ) : isClose == true ? (
+          ) : isClose === true ? (
             <>
               <div className="profile-title-container">
                 <h2 className="profile-title">

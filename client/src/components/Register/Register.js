@@ -59,6 +59,7 @@ const Register = () => {
         <div className="register-img-container">
           <img
             className="register-img"
+            alt="girl bites delicious cake"
             src="https://img.freepik.com/free-photo/hungry-greedy-afro-american-girl-bites-big-delicious-piece-cake-poses-table-with-many-yummy-desserts-has-sweet-breakfast-home-unhealthy-nutrition-isolated-blue-wall_273609-34535.jpg?w=1380&t=st=1666713924~exp=1666714524~hmac=b8718c39ab8b2f31c1f2524215dd2fdd115945800805fe00b32e07492766f615"
           ></img>
         </div>

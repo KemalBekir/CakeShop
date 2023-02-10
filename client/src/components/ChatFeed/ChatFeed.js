@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
-import { isSameSenderMargin, isSameUser } from "../../utils/utils";
 import "./ChatFeed.css";
 import moment from "moment";
 

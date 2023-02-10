@@ -1,11 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import * as catalogService from "../services/catalogServices";
 
 export const CakesContext = createContext();
 
 export const CakesProvider = ({ children }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
   const [cakes, setCakes] = useState([]);
 

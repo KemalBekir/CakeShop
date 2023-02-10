@@ -8,9 +8,8 @@ import { ChatContext } from "../../contexts/chatContext";
 
 const MyChats = () => {
   const { user } = useContext(AuthContext);
-  const [notification, setNotification] = useState([]);
+  // const [notification, setNotification] = useState([]);
   const [chatId, setChatId] = useState();
-  const [active, setActive] = useState(false);
 
   const fetchChats = async () => {
     ChatService.getChats(user.accessToken).then((result) => {
@@ -36,17 +35,17 @@ const MyChats = () => {
     setChats,
     latestMessage,
     setLatestMessage,
-    messages,
+
     setMessages,
   } = useContext(ChatContext);
 
   useEffect(() => {
     fetchChats();
-  }, [latestMessage, selectedChat]);
+  }, [latestMessage, selectedChat,]);
 
   useEffect(() => {
     getAllMessages();
-  }, [chatId]);
+  }, [chatId, ]);
 
   return (
     <div>

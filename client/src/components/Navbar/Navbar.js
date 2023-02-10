@@ -8,7 +8,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const { user } = useAuthContext();
   const [active, setActive] = useState(false);
-  const isAdmin = user.email == "peter@abv.bg";
+  const isAdmin = user.email === "peter@abv.bg";
 
   const handleClick = () => {
     setActive(!active);
