@@ -132,7 +132,8 @@
     margin-top: 1rem;
   }
 
-  .user {
+  .user,
+  .guest {
     flex-direction: column;
   }
 

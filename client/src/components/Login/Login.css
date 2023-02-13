@@ -91,3 +91,35 @@
   font-weight: bold;
   color: #31c48d;
 }
+
+
+@media only screen and (max-width:820px){
+  .login-section{
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 380px){
+  .login-section{
+    width: 95%;
+  }
+
+  .login-section-container{
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .login-img-container{
+    height: 500px;
+  }
+
+  .login-img{
+    height: 500px;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: 1rem;
+  }
+
+  .login-link{
+    margin-bottom: 1.5rem;
+  }
+}
