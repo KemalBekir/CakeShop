@@ -68,7 +68,6 @@ const Details = () => {
             </li>
           </ul>
           <div className="details-btn-wrapper">
-            {console.log(isOwner)}
             {isOwner && (
               <>
                 <Link

@@ -94,7 +94,8 @@
     margin-top: 1rem;
   }
 
-  .user {
+  .user,
+  .guest {
     flex-direction: column;
   }
 
@@ -130,11 +131,6 @@
   }
   .nav ul li:nth-child(1) {
     margin-top: 1rem;
-  }
-
-  .user,
-  .guest {
-    flex-direction: column;
   }
 
   .nav ul.active {

@@ -67,13 +67,11 @@
     left: 13%;
   }
   .home-section-title {
-    left: unset;
     top: 5%;
   }
 
   .home-section-paragraph {
     width: 74%;
-    left: unset;
     top: 10%;
   }
 }
