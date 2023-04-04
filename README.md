@@ -34,7 +34,7 @@ npm start
 ```
 
 ## REST_API Endpoints:
->baseUrl: http://localhost:3030
+>baseUrl: http://localhost:5000
 
 #### Login
 Login by sending a **POST** request with email and password to /users/login. The service will respond with an object, containing a standard string token, that can be used for requests.
