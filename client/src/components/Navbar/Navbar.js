@@ -23,6 +23,7 @@ const Navbar = () => {
                 className="logo"
                 src="/assets/logo-no-background.svg"
                 alt="company logo"
+                onClick={()=> setActive(false)}
               />
             </Link>
           </span>
@@ -30,7 +31,7 @@ const Navbar = () => {
         <div className={`nav-list-container `}>
           <ul className={`${active ? "active" : "deactive"}`}>
             <li>
-              <Link style={{ textDecoration: "none", color: "white" }} to="/">
+              <Link style={{ textDecoration: "none", color: "white" }} to="/" onClick={()=> setActive(false)}>
                 Home
               </Link>
             </li>
@@ -38,6 +39,7 @@ const Navbar = () => {
               <Link
                 style={{ textDecoration: "none", color: "white" }}
                 to="/catalogue"
+                onClick={()=> setActive(false)}
               >
                 Catalogue
               </Link>
@@ -46,6 +48,7 @@ const Navbar = () => {
               <Link
                 style={{ textDecoration: "none", color: "white" }}
                 to="/catalogue/search"
+                onClick={()=> setActive(false)}
               >
                 Search
               </Link>
@@ -56,6 +59,7 @@ const Navbar = () => {
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
                     to="/profile"
+                    onClick={()=> setActive(false)}
                   >
                     Profile
                   </Link>
@@ -65,6 +69,7 @@ const Navbar = () => {
                     <Link
                       style={{ textDecoration: "none", color: "white" }}
                       to="/create"
+                      onClick={()=> setActive(false)}
                     >
                       Create
                     </Link>
@@ -74,6 +79,7 @@ const Navbar = () => {
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
                     to="/logout"
+                    onClick={()=> setActive(false)}
                   >
                     Logout
                   </Link>
@@ -85,6 +91,7 @@ const Navbar = () => {
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
                     to="/login"
+                    onClick={()=> setActive(false)}
                   >
                     Login
                   </Link>
@@ -93,6 +100,7 @@ const Navbar = () => {
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
                     to="/register"
+                    onClick={()=> setActive(false)}
                   >
                     Register
                   </Link>

@@ -34,7 +34,7 @@ const Details = () => {
       }
       setCake(result);
     });
-  }, [cakeId]);
+  }, [cakeId,user._id]);
 
   return (
     <section className="details-section">
