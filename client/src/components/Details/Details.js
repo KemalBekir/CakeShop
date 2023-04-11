@@ -95,6 +95,7 @@ const Details = () => {
             )}
           </div>
         </div>
+        {}
         {isLogged && !isOwner ? <ChatPopup cake={cake} /> : ""}
       </div>
       {/* //   )} */}
