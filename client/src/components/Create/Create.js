@@ -16,9 +16,9 @@ const CreateSchema = Yup.object().shape({
   price: Yup.number().min(0, "Price must be positive number"),
   type: Yup.string().required("Type of cake is required"),
   imgOne: Yup.string().required("Image is required"),
-  imgTwo: Yup.string().required("image is required"),
-  imgThree: Yup.string().required("image is required"),
-  imgFour: Yup.string().required("image is required"),
+  imgTwo: Yup.string().required("Image is required"),
+  imgThree: Yup.string().required("Image is required"),
+  imgFour: Yup.string().required("Image is required"),
   onOffer: Yup.boolean().default(false),
   discount: Yup.number()
     .oneOf([0, 10, 15, 20, 25, 30, 35, 40, 45, 50])
@@ -77,23 +77,33 @@ const Create = () => {
                   <Field
                     type="text"
                     name="cakeName"
-                    placeholder="Enter Cake name."
-                    className="create-name"
+                    placeholder={
+                      errors.cakeName && touched.cakeName
+                        ? errors.cakeName
+                        : "Enter name for Cake"
+                    }
+                    className={
+                      errors.cakeName && touched.cakeName
+                        ? "create-name-alert"
+                        : "create-name"
+                    }
                   />
-                  {errors.cakeName && touched.cakeName ? (
-                    <p className="alert">{errors.cakeName}</p>
-                  ) : null}
                   <label htmlFor="description">Description:</label>
                   <Field
                     as="textarea"
                     type="text"
                     name="desc"
-                    className="create-desc"
-                    placeholder="Please enter description"
+                    className={
+                      errors.desc && touched.desc
+                        ? "create-desc-alert"
+                        : "create-desc"
+                    }
+                    placeholder={
+                      errors.desc && touched.desc
+                        ? errors.desc
+                        : "Please enter description"
+                    }
                   />
-                  {errors.desc && touched.desc ? (
-                    <p className="alert">{errors.desc}</p>
-                  ) : null}
                   <label htmlFor="price">Price:</label>
                   <Field
                     type="number"
@@ -108,52 +118,78 @@ const Create = () => {
                   <Field
                     type="text"
                     name="type"
-                    className="create-type"
-                    placeholder="Please enter type."
+                    className={
+                      errors.type && touched.type
+                        ? "create-type-alert"
+                        : "create-type"
+                    }
+                    placeholder={
+                      errors.type && touched.type
+                        ? errors.type
+                        : "Please enter type."
+                    }
                   />
-                  {errors.type && touched.type ? (
-                    <p className="alert">{errors.type}</p>
-                  ) : null}
                   <label htmlFor="imgOne">First Image:</label>
                   <Field
                     type="text"
                     name="imgOne"
-                    placeholder="Link to image of the first Cake"
-                    className="create-image"
+                    placeholder={
+                      errors.imgOne && touched.imgOne
+                        ? errors.imgOne
+                        : "Link to image of the first Cake"
+                    }
+                    className={
+                      errors.imgOne && touched.imgOne
+                        ? "create-img-alert"
+                        : "create-image"
+                    }
                   />
-                  {errors.imgOne && touched.imgOne ? (
-                    <p className="alert">{errors.imgOne}</p>
-                  ) : null}
                   <label htmlFor="imgTwo">Second Image:</label>
                   <Field
                     type="text"
                     name="imgTwo"
-                    placeholder="Link to image of the second Cake"
-                    className="create-image"
+                    placeholder={
+                      errors.imgTwo && touched.imgTwo
+                        ? errors.imgTwo
+                        : "Link to image of the second Cake"
+                    }
+                    className={
+                      errors.imgTwo && touched.imgTwo
+                        ? "create-img-alert"
+                        : "create-image"
+                    }
                   />
-                  {errors.imgTwo && touched.imgTwo ? (
-                    <p className="alert">{errors.imgTwo}</p>
-                  ) : null}
                   <label htmlFor="imgThree">Third Image:</label>
                   <Field
                     type="text"
                     name="imgThree"
-                    placeholder="Link to image of the third Cake"
-                    className="create-image"
+                    placeholder={
+                      errors.imgThree && touched.imgThree
+                        ? errors.imgThree
+                        : "Link to image of the third Cake"
+                    }
+                    className={
+                      errors.imgThree && touched.imgThree
+                        ? "create-img-alert"
+                        : "create-image"
+                    }
                   />
-                  {errors.imgThree && touched.imgThree ? (
-                    <p className="alert">{errors.imgThree}</p>
-                  ) : null}
+
                   <label htmlFor="imgFour">Fourth Image:</label>
                   <Field
                     type="text"
                     name="imgFour"
-                    placeholder="Link to image of the fourth Cake"
-                    className="create-image"
+                    placeholder={
+                      errors.imgFour && touched.imgFour
+                        ? errors.imgFour
+                        : "Link to image of the fourth Cake"
+                    }
+                    className={
+                      errors.imgFour && touched.imgFour
+                        ? "create-img-alert"
+                        : "create-image"
+                    }
                   />
-                  {errors.imgFour && touched.imgFour ? (
-                    <p className="alert">{errors.imgFour}</p>
-                  ) : null}
                   <label className="create-offer-label" htmlFor="onOffer">
                     On Offer:
                     <Field

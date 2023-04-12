@@ -33,9 +33,11 @@
   border-bottom-left-radius: 1rem;
 }
 
+
 .create-form-container {
   width: 100%;
   margin: 0 auto;
+  height: 100%;
 }
 
 .create-form {
@@ -79,6 +81,15 @@
   padding-left: 0.5rem;
   padding-bottom: 0.5rem;
   color: gray;
+}
+
+.create-name-alert::placeholder,
+.create-desc-alert::placeholder,
+.create-type-alert::placeholder,
+.create-tel-alert::placeholder,
+.create-price-alert::placeholder,
+.create-img-alert::placeholder{
+  color: red;
 }
 
 .create-desc {
