@@ -1,4 +1,4 @@
-const msgUrl = "http://localhost:5000/message";
+const msgUrl = "https://cakeshop-api.render.com/message";
 
 export async function getAllMessages(chatId, token) {
   return fetch(`${msgUrl}/${chatId}`, {

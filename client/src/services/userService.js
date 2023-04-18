@@ -1,5 +1,5 @@
 export async function loginUser({ email, password }) {
-  return fetch("http://localhost:5000/users/login", {
+  return fetch("https://cakeshop-api.render.com/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -9,7 +9,7 @@ export async function loginUser({ email, password }) {
 }
 
 export async function registerUser({ username, email, password }) {
-    return fetch("http://localhost:5000/users/register", {
+    return fetch("https://cakeshop-api.render.com/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export async function registerUser({ username, email, password }) {
 }
 
 export async function getProfile(token) {
-    return fetch("http://localhost:5000/users/profile", {
+    return fetch("https://cakeshop-api.render.com/users/profile", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export async function getProfile(token) {
 }
 
 export async function logout(token){
-    return fetch('http://localhost:5000/users/logout', {
+    return fetch('https://cakeshop-api.render.com/users/logout', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

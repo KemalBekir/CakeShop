@@ -1,4 +1,4 @@
-const catalogUrl = "http://localhost:5000/catalog";
+const catalogUrl = "https://cakeshop-api.render.com/catalog";
 
 export async function getAll() {
   return fetch(`${catalogUrl}/`, {

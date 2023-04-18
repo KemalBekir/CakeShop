@@ -1,4 +1,4 @@
-const chatURL = "http://localhost:5000/chat";
+const chatURL = "https://cakeshop-api.render.com/chat";
 
 export async function getChats(token) {
   return fetch(`${chatURL}/`, {
