@@ -1,4 +1,4 @@
-const msgUrl = "https://cakeshop-api.render.com/message";
+const msgUrl = "https://cakeshop-api.onrender.com/message";
 
 export async function getAllMessages(chatId, token) {
   return fetch(`${msgUrl}/${chatId}`, {
