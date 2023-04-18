@@ -30,7 +30,7 @@ const ChatPopup = ({ cake }) => {
           setLatestMessage(result[0].latestMessage?.content);
           setChat(result);
         } else {
-          ChatService.accessChat(user.accessToken, cake.owner._id).then(
+          ChatService.accessChat(user.accessToken, cake.owner?._id).then(
             (result) => {
               setChat(result);
             }
