@@ -9,7 +9,7 @@ import ChatFeed from "../ChatFeed/ChatFeed";
 import io from "socket.io-client";
 import { ChatContext } from "../../contexts/chatContext";
 
-const ENDPOINT = "http://localhost:5000"; //TODO - change when deploying
+const ENDPOINT = "https://cakeshop-api.onrender.com"; //TODO - change when deploying
 let socket, selectedChatCompare;
 
 const ChatWindow = ({ isClose, setIsClose }) => {
