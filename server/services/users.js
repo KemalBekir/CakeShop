@@ -70,7 +70,7 @@ function verifySession(token) {
 }
 
 async function getProfile(id) {
-    const user = User.findOne({ _id: id }, { hashedPassword: 0, __v: 0});
+    const user = User.findOne(  );
 
     if(!user) {
         throw new Error("User does not exist");
